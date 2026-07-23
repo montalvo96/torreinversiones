@@ -1,10 +1,10 @@
 /**
  * Archivo: index.js
- * Descripción: Script de control dinámico para la landing page de Torre Inversiones.
+ * Descripción: Script de control dinámico para el sitio web multipágina de Torre Inversiones.
  *              Maneja el comportamiento del navbar al hacer scroll, el menú responsive,
  *              las animaciones de conteo de estadísticas, revelado de elementos por scroll,
  *              el filtro de propiedades y la validación del formulario de contacto.
- * Última modificación: 2026-06-25
+ * Última modificación: 2026-06-30
  * Autor: Antigravity AI
  */
 

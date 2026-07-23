@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- 
+      Archivo: contacto.html
+      Descripción: Formulario exclusivo de contacto y canales de atención de Torre Inversiones.
+      Última modificación: 2026-06-30
+      Autor: Antigravity AI
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ponte en contacto con Torre Inversiones. Solicita asesoría de inversión patrimonial personalizada.">
+    <title>Contacto | Torre Inversiones</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Logo Torre Inversiones - Sin Fondo.png">
+    
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="index.css?v=1.2">
+</head>
+<body>
+
+    <!-- ==========================================
+       1. CABECERA Y NAVEGACIÓN
+       ========================================== -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="nav-logo" id="navLogoLink">
+                    <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="desarrollos.html" class="nav-link">Desarrollos</a></li>
+                    <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+                    <li><a href="partners.html" class="nav-link">Partners</a></li>
+                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="contacto.html" class="btn btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.65rem;">Asesoría Directa</a>
+                </div>
+                
+                <div class="nav-toggle" id="navToggleBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================
+       2. HERO DE LA SUBPÁGINA
+       ========================================== -->
+    <section class="internal-hero">
+        <div class="container">
+            <h1 class="internal-hero-title text-gradient-gold">Hablemos de tu Futuro</h1>
+            <p class="internal-hero-subtitle">
+                Agenda una sesión estratégica uno a uno con nuestros asesores de inversión patrimonial. Sin compromisos, con claridad absoluta.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       3. SECCIÓN FORMULARIO Y CANALES DE CONTACTO
+       ========================================== -->
+    <section class="section-padding" style="background-color: var(--color-bg-deep);">
+        <div class="container">
+            <div class="reveal">
+                <div class="contact-grid">
+                    
+                    <!-- Información de Contacto (Izquierda) -->
+                    <div class="contact-info">
+                        <span class="eyebrow">Canales Directos</span>
+                        <h2 class="title-medium text-gradient-gold">Contacto Oficial</h2>
+                        <p class="contact-sub">
+                            Estamos disponibles para asistirte por llamada, mensaje de texto o correo electrónico. También puedes seguirnos en nuestras redes sociales para conocer las últimas preventas.
+                        </p>
+                        
+                        <div class="contact-channels">
+                            <div class="channel-card">
+                                <div class="channel-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <label>Teléfono de Atención</label>
+                                    <span>+52 (999) 496-0094</span>
+                                </div>
+                            </div>
+                            
+                            <div class="channel-card">
+                                <div class="channel-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <label>WhatsApp Directo</label>
+                                    <span><a href="https://wa.me/529994960094?text=Hola,%20solicito%20asesoria%20de%20Torre%20Inversiones" target="_blank" rel="noopener noreferrer" style="color: #29cf72; font-weight: 700;">+52 (999) 496-0094</a></span>
+                                </div>
+                            </div>
+                            
+                            <div class="channel-card">
+                                <div class="channel-icon">
+                                    <i class="far fa-envelope"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <label>Correo de Negocios</label>
+                                    <span>contacto@torreinversiones.com</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario de Contacto Premium (Derecha) -->
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="formName">Nombre Completo *</label>
+                                <input type="text" id="formName" class="form-control" placeholder="Ej. Juan Pérez" required>
+                            </div>
+                            
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="formEmail">Correo Electrónico *</label>
+                                    <input type="email" id="formEmail" class="form-control" placeholder="juan@ejemplo.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formPhone">Teléfono / WhatsApp *</label>
+                                    <input type="tel" id="formPhone" class="form-control" placeholder="999 123 4567" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="formSelect">Tipo de Interés</label>
+                                <select id="formSelect" class="form-control form-select">
+                                    <option value="departamentos">Departamentos de Lujo</option>
+                                    <option value="residencial">Casas y Residencias</option>
+                                    <option value="terrenos">Lotes e Inversión Patrimonial</option>
+                                    <option value="asesoria">Asesoría General</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="formMessage">Mensaje (Opcional)</label>
+                                <textarea id="formMessage" class="form-control" placeholder="Escribe aquí tu consulta..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-btn">Enviar Mensaje <i class="far fa-paper-plane"></i></button>
+                            
+                            <!-- Mensaje de Feedback -->
+                            <div class="form-feedback" id="formFeedback"></div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       4. FOOTER (PIE DE PÁGINA)
+       ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
+                    </div>
+                    <p class="footer-tagline">
+                        Solidez, plusvalía y excelencia en inversiones patrimoniales y bienes raíces.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="desarrollos.html" class="footer-link">Desarrollos</a></li>
+                        <li><a href="nosotros.html" class="footer-link">Nosotros</a></li>
+                        <li><a href="partners.html" class="footer-link">Partners</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Aviso de Privacidad</a></li>
+                        <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
+                        <li><a href="#" class="footer-link">Certeza Jurídica</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Newsletter</h4>
+                    <p class="newsletter-sub">Recibe información sobre preventas exclusivas y reportes del sector inmobiliario.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!'); this.reset();">
+                        <input type="email" class="form-control" placeholder="Tu correo electrónico" required aria-label="Correo para newsletter">
+                        <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Torre Inversiones. Todos los derechos reservados. Inversiones • Bienes Raíces.</p>
+                <div class="footer-bottom-links">
+                    <a href="contacto.html">Soporte</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script del comportamiento dinámico -->
+    <script src="index.js?v=1.2"></script>
+</body>
+</html>
