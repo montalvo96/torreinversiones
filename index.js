@@ -122,40 +122,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-       5. FILTRO INTERACTIVO DE PROPIEDADES
+       5. TABS DE FILTRO (VISUAL)
+       ------------------------------------------
+       La API de desarrollos no expone categoría, así
+       que los botones solo alternan su estado activo;
+       no filtran las tarjetas cargadas dinámicamente.
        ========================================== */
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const propertyCards = document.querySelectorAll('.property-card');
 
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remover clase activa de botones
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            propertyCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                // Efecto de fade-out antes de ocultar
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.9) translateY(10px)';
-                
-                setTimeout(() => {
-                    if (filterValue === 'all' || category === filterValue) {
-                        card.style.display = 'flex';
-                        // Forzar reflujo
-                        card.offsetHeight;
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1) translateY(0)';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }, 300);
-            });
         });
     });
+
+    /* ==========================================
+       5B. DESARROLLOS DINÁMICOS (API)
+       ========================================== */
+    cargarDesarrollosEnGrids();
 
     /* ==========================================
        6. VALIDACIÓN Y ENVÍO DEL FORMULARIO DE CONTACTO
@@ -214,3 +199,107 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
+/**
+ * ==========================================
+ * 7. DESARROLLOS DINÁMICOS DESDE LA API
+ * ==========================================
+ * Consume la API pública de Torre Inversiones y renderiza
+ * una tarjeta por cada desarrollo recibido, tanto en el grid
+ * de destacados (index.html) como en el catálogo completo
+ * (desarrollos.html). Ambos usan el mismo markup [data-desarrollos-grid].
+ */
+const DESARROLLOS_API_URL = 'https://app.torreinversiones.com/api/desarrollos';
+const DESARROLLOS_IMG_BASE = 'https://app.torreinversiones.com/';
+
+function crearTarjetaDesarrollo(desarrollo) {
+    const card = document.createElement('div');
+    card.className = 'property-card';
+
+    const media = document.createElement('div');
+    media.className = 'property-media';
+
+    const img = document.createElement('img');
+    img.className = 'property-img';
+    img.loading = 'lazy';
+    img.alt = desarrollo.nombre || 'Desarrollo Torre Inversiones';
+    img.src = desarrollo.url_imagen
+        ? DESARROLLOS_IMG_BASE + String(desarrollo.url_imagen).replace(/^\/+/, '')
+        : 'Logo Torre Inversiones - Sin Fondo.png';
+    media.appendChild(img);
+
+    const body = document.createElement('div');
+    body.className = 'property-body';
+
+    const title = document.createElement('h3');
+    title.className = 'property-title';
+    title.textContent = desarrollo.nombre || 'Desarrollo';
+    body.appendChild(title);
+
+    const excerpt = document.createElement('p');
+    excerpt.className = 'property-excerpt';
+    excerpt.textContent = desarrollo.descripcion || '';
+    body.appendChild(excerpt);
+
+    if (desarrollo.link_proyecto) {
+        const footer = document.createElement('div');
+        footer.className = 'property-footer';
+
+        const link = document.createElement('a');
+        link.className = 'property-link';
+        link.href = desarrollo.link_proyecto;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.innerHTML = 'Ver proyecto <i class="fas fa-arrow-right"></i>';
+
+        footer.appendChild(link);
+        body.appendChild(footer);
+    }
+
+    card.appendChild(media);
+    card.appendChild(body);
+    return card;
+}
+
+function mostrarEstadoGrid(grid, tipo, mensaje, icono) {
+    grid.innerHTML = '';
+    const state = document.createElement('div');
+    state.className = `desarrollos-state desarrollos-${tipo}`;
+    state.innerHTML = `<i class="fas ${icono}"></i><p>${mensaje}</p>`;
+    grid.appendChild(state);
+}
+
+async function cargarDesarrollosEnGrids() {
+    const grids = document.querySelectorAll('[data-desarrollos-grid]');
+    if (grids.length === 0) return;
+
+    grids.forEach(grid => mostrarEstadoGrid(grid, 'loading', 'Cargando desarrollos...', 'fa-spinner'));
+
+    let desarrollos = [];
+    try {
+        const response = await fetch(DESARROLLOS_API_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const json = await response.json();
+        desarrollos = (json && json.success && Array.isArray(json.data)) ? json.data : [];
+    } catch (error) {
+        console.error('Error al cargar desarrollos:', error);
+        grids.forEach(grid => mostrarEstadoGrid(
+            grid,
+            'error',
+            'No pudimos cargar los desarrollos en este momento. Intenta de nuevo más tarde.',
+            'fa-triangle-exclamation'
+        ));
+        return;
+    }
+
+    grids.forEach(grid => {
+        if (desarrollos.length === 0) {
+            mostrarEstadoGrid(grid, 'empty', 'Próximamente nuevos desarrollos.', 'fa-building-circle-check');
+            return;
+        }
+        grid.innerHTML = '';
+        desarrollos.forEach(desarrollo => {
+            grid.appendChild(crearTarjetaDesarrollo(desarrollo));
+        });
+    });
+}

@@ -680,6 +680,31 @@ button, input, textarea, select {
     margin-top: 5rem;
 }
 
+/* Estados de carga/vacío/error para el grid dinámico de desarrollos */
+.desarrollos-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.desarrollos-state i {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+}
+
+.desarrollos-state.desarrollos-loading i {
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 /* ==========================================
    8. SECCIÓN NOSOTROS
    ========================================== */
