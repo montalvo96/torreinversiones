@@ -605,6 +605,25 @@ button, input, textarea, select {
     margin-bottom: 1.75rem;
 }
 
+.property-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag-pill {
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    border: 1px solid var(--color-border);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+    background: rgba(197, 160, 89, 0.08);
+}
+
 .property-amenities {
     display: flex;
     gap: 1.5rem;

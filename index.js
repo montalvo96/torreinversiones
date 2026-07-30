@@ -122,23 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-       5. TABS DE FILTRO (VISUAL)
+       5. DESARROLLOS DINÁMICOS (API)
        ------------------------------------------
-       La API de desarrollos no expone categoría, así
-       que los botones solo alternan su estado activo;
-       no filtran las tarjetas cargadas dinámicamente.
-       ========================================== */
-    const filterButtons = document.querySelectorAll('.filter-btn');
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-
-    /* ==========================================
-       5B. DESARROLLOS DINÁMICOS (API)
+       Los botones de filtro de desarrollos.html se
+       generan dinámicamente a partir de los tags que
+       traiga la API (ver sección 7 más abajo).
        ========================================== */
     cargarDesarrollosEnGrids();
 
@@ -216,6 +204,9 @@ function crearTarjetaDesarrollo(desarrollo) {
     const card = document.createElement('div');
     card.className = 'property-card';
 
+    const tags = Array.isArray(desarrollo.tags) ? desarrollo.tags.filter(Boolean) : [];
+    card.dataset.tags = tags.join('|||');
+
     const media = document.createElement('div');
     media.className = 'property-media';
 
@@ -236,18 +227,30 @@ function crearTarjetaDesarrollo(desarrollo) {
     title.textContent = desarrollo.nombre || 'Desarrollo';
     body.appendChild(title);
 
+    if (tags.length > 0) {
+        const tagsWrap = document.createElement('div');
+        tagsWrap.className = 'property-tags';
+        tags.forEach(tag => {
+            const pill = document.createElement('span');
+            pill.className = 'tag-pill';
+            pill.textContent = tag;
+            tagsWrap.appendChild(pill);
+        });
+        body.appendChild(tagsWrap);
+    }
+
     const excerpt = document.createElement('p');
     excerpt.className = 'property-excerpt';
     excerpt.textContent = desarrollo.descripcion || '';
     body.appendChild(excerpt);
 
-    if (desarrollo.link_proyecto) {
+    if (desarrollo.link_unbroker_page) {
         const footer = document.createElement('div');
         footer.className = 'property-footer';
 
         const link = document.createElement('a');
         link.className = 'property-link';
-        link.href = desarrollo.link_proyecto;
+        link.href = desarrollo.link_unbroker_page;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.innerHTML = 'Ver proyecto <i class="fas fa-arrow-right"></i>';
@@ -267,6 +270,45 @@ function mostrarEstadoGrid(grid, tipo, mensaje, icono) {
     state.className = `desarrollos-state desarrollos-${tipo}`;
     state.innerHTML = `<i class="fas ${icono}"></i><p>${mensaje}</p>`;
     grid.appendChild(state);
+}
+
+function aplicarFiltroDesarrollos(filterValue) {
+    const grid = document.getElementById('allDesarrollosGrid');
+    if (!grid) return;
+
+    grid.querySelectorAll('.property-card').forEach(card => {
+        const tags = card.dataset.tags ? card.dataset.tags.split('|||') : [];
+        const visible = filterValue === 'all' || tags.includes(filterValue);
+        card.style.display = visible ? '' : 'none';
+    });
+}
+
+function construirFiltrosDesarrollos(desarrollos) {
+    const filterContainer = document.getElementById('desarrollosFilterTabs');
+    if (!filterContainer) return;
+
+    const tagsUnicos = Array.from(new Set(
+        desarrollos.flatMap(d => (Array.isArray(d.tags) ? d.tags : [])).filter(Boolean)
+    )).sort((a, b) => a.localeCompare(b, 'es'));
+
+    filterContainer.innerHTML = '';
+
+    const crearBoton = (label, value, activo) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'filter-btn' + (activo ? ' active' : '');
+        btn.dataset.filter = value;
+        btn.textContent = label;
+        btn.addEventListener('click', () => {
+            filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            aplicarFiltroDesarrollos(value);
+        });
+        return btn;
+    };
+
+    filterContainer.appendChild(crearBoton('Todos', 'all', true));
+    tagsUnicos.forEach(tag => filterContainer.appendChild(crearBoton(tag, tag, false)));
 }
 
 async function cargarDesarrollosEnGrids() {
@@ -289,8 +331,11 @@ async function cargarDesarrollosEnGrids() {
             'No pudimos cargar los desarrollos en este momento. Intenta de nuevo más tarde.',
             'fa-triangle-exclamation'
         ));
+        construirFiltrosDesarrollos([]);
         return;
     }
+
+    construirFiltrosDesarrollos(desarrollos);
 
     grids.forEach(grid => {
         if (desarrollos.length === 0) {

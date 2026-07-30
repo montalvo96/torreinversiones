@@ -71,14 +71,8 @@
     <section class="section-padding" style="background-color: var(--color-bg-deep);">
         <div class="container">
             
-            <!-- Filtros Interactivos -->
-            <div class="filter-tabs reveal">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="residencial">Residencial</button>
-                <button class="filter-btn" data-filter="terrenos">Terrenos de Inversión</button>
-                <button class="filter-btn" data-filter="departamentos">Departamentos</button>
-                <button class="filter-btn" data-filter="comercial">Comerciales</button>
-            </div>
+            <!-- Filtros Interactivos: se generan dinámicamente a partir de los tags que traiga la API -->
+            <div class="filter-tabs reveal" id="desarrollosFilterTabs"></div>
             
             <!-- Cuadrícula de Propiedades Ultra Simétrica -->
             <div class="properties-grid reveal reveal-delay-1" id="allDesarrollosGrid" data-desarrollos-grid></div>
