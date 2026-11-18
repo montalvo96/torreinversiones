@@ -1,244 +1,148 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- 
-      Archivo: nosotros.html
-      Descripción: Información sobre la trayectoria, misión, valores y equipo directivo/asesor de Torre Inversiones.
-      Última modificación: 2026-06-30
-      Autor: Antigravity AI
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conoce la trayectoria, misión y el equipo de asesores patrimoniales expertos en bienes raíces detrás de Torre Inversiones.">
     <title>Nosotros | Torre Inversiones</title>
-    
-    <!-- Favicon -->
+    <meta name="description" content="Torre Inversiones nace para que invertir en bienes raíces deje de ser un acto de fe. Conoce a Daniel Torre, nuestra misión y nuestro compromiso de transparencia.">
+    <meta property="og:title" content="Detrás de cada recomendación hay alguien que da la cara | Torre Inversiones">
+    <meta property="og:image" content="Logo Torre Inversiones - Sin Fondo.png">
     <link rel="icon" type="image/png" href="Logo Torre Inversiones - Sin Fondo.png">
-    
-    <!-- FontAwesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Estilos Personalizados -->
-    <link rel="stylesheet" href="index.css?v=1.2">
+    <link rel="stylesheet" href="index.css?v=2.1">
 </head>
-<body>
+<body data-page="nosotros" data-wa-msg="Hola, me gustaría agendar una asesoría con Torre Inversiones.">
 
-    <!-- ==========================================
-       1. CABECERA Y NAVEGACIÓN
-       ========================================== -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="nav-logo" id="navLogoLink">
-                    <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="desarrollos.html" class="nav-link">Desarrollos</a></li>
-                    <li><a href="nosotros.html" class="nav-link active">Nosotros</a></li>
-                    <li><a href="partners.html" class="nav-link">Partners</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+    <div id="site-header"></div>
+
+    <main>
+        <!-- Hero: foto grande de Dani frente a una audiencia (config.imagenes.nosotrosHero) -->
+        <section class="hero-home hero-short" data-img="nosotrosHero">
+            <div class="hero-home-overlay"></div>
+            <div class="container hero-home-content reveal">
+                <span class="eyebrow">Nosotros</span>
+                <h1 class="title-large">Detrás de cada recomendación hay <span class="text-gradient-gold">alguien que da la cara.</span></h1>
+                <p class="hero-description">
+                    Torre Inversiones nace para que invertir en bienes raíces deje de ser un acto de fe. Conectamos capital con proyectos reales, y lo hacemos con información completa.
+                </p>
+            </div>
+        </section>
+
+        <!-- Nuestra historia / Quién es Dani -->
+        <section class="section-padding">
+            <div class="container story-grid">
+                <div class="story-photo reveal" data-img-tag="retratoDani" data-alt="Daniel Torre, fundador de Torre Inversiones">
+                    <div class="ph ph-portrait"><i class="fas fa-user"></i><span>[Retrato profesional de Dani]</span></div>
+                </div>
+                <div class="story-text reveal reveal-delay-1">
+                    <span class="eyebrow">Nuestra historia</span>
+                    <h2 class="title-medium">Quién es Dani</h2>
+                    <p>
+                        Soy Daniel Torre. Vivo en Mérida y he trabajado en la comercialización de proyectos inmobiliarios desde 2018, apoyando a cientos de asesores e inversionistas alrededor de México a concretar buenas inversiones inmobiliarias en el sureste, desde terrenos en preventa y desarrollos de vivienda hasta agroinversiones. En ese camino vi cómo muchos inversionistas tomaban decisiones con información incompleta y cómo muchos asesores vendían proyectos que no conocían a fondo.
+                    </p>
+                    <p>
+                        Fundé Torre Inversiones para hacerlo distinto: revisar cada proyecto antes de presentarlo, mostrar los números tal como son y acompañar a cada cliente y a cada broker como me gustaría que me acompañaran a mí.
+                    </p>
+                    <p class="signature">— Daniel Torre, fundador</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Misión y visión -->
+        <section class="section-padding section-alt">
+            <div class="container">
+                <div class="cards-2">
+                    <div class="info-card reveal">
+                        <i class="fas fa-compass"></i>
+                        <h3>Misión</h3>
+                        <p>Ayudar a inversionistas y asesores a tomar decisiones patrimoniales con información clara, proyectos verificados y acompañamiento honesto.</p>
+                    </div>
+                    <div class="info-card reveal reveal-delay-1">
+                        <i class="fas fa-eye"></i>
+                        <h3>Visión</h3>
+                        <p>Ser la referencia de confianza para invertir en el sureste de México.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compromiso de transparencia -->
+        <section class="section-padding">
+            <div class="container narrow">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Transparencia</span>
+                    <h2 class="title-medium">Nuestro compromiso de transparencia</h2>
+                </div>
+                <ul class="commitment-list reveal">
+                    <li><i class="fas fa-check"></i>No presentamos proyectos que no hayamos revisado.</li>
+                    <li><i class="fas fa-check"></i>Te mostramos datos de fuentes oficiales.</li>
+                    <li><i class="fas fa-check"></i>Te decimos cómo ganamos: nuestra comisión la paga el desarrollador; la asesoría no tiene costo para ti.</li>
+                    <li><i class="fas fa-check"></i>Si un proyecto no es para ti, te lo decimos.</li>
                 </ul>
-                
-                <div class="nav-actions">
-                    <a href="contacto.html" class="btn btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.65rem;">Asesoría Directa</a>
-                </div>
-                
-                <div class="nav-toggle" id="navToggleBtn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- ==========================================
-       2. HERO DE LA SUBPÁGINA
-       ========================================== -->
-    <section class="internal-hero">
-        <div class="container">
-            <h1 class="internal-hero-title text-gradient-gold">Quiénes Somos</h1>
-            <p class="internal-hero-subtitle">
-                Una firma comprometida con la solidez, la transparencia legal y el crecimiento patrimonial inteligente de nuestros clientes.
-            </p>
-        </div>
-    </section>
-
-    <!-- ==========================================
-       3. SECCIÓN SOBRE NOSOTROS (EXTENDIDA)
-       ========================================== -->
-    <section class="section-padding" style="background-color: var(--color-bg-deep);">
-        <div class="container">
-            <div class="about-grid" style="margin-bottom: 7rem;">
-                <div class="about-content reveal">
-                    <span class="eyebrow">Nuestra Historia</span>
-                    <h2 class="title-medium text-gradient-gold" style="margin-bottom: 1.5rem;">Consolidando legados desde hace una década</h2>
-                    <p style="color: var(--color-text-muted); font-weight: 300; margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.05rem;">
-                        Torre Inversiones nació con el firme propósito de democratizar y estructurar la inversión en bienes raíces de lujo y plusvalía en el sureste mexicano. Identificamos la necesidad de brindar una consultoría con profundo rigor legal y financiero, alejándonos de la especulación inmobiliaria.
-                    </p>
-                    <p style="color: var(--color-text-muted); font-weight: 300; margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.05rem;">
-                        A lo largo de 10 años, hemos acompañado a cientos de inversionistas nacionales y extranjeros a adquirir desde lotes residenciales urbanizados hasta desarrollos corporativos y residencias de gama alta. Nuestra reputación se cimenta sobre la transparencia absoluta y la minuciosa auditoría de cada activo.
-                    </p>
-                </div>
-                
-                <div class="about-visual reveal reveal-delay-2">
-                    <div class="about-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Corporativo Torre Inversiones" class="about-img" style="height: 480px;">
-                    </div>
-                    <div class="about-experience-badge">
-                        <h3>10</h3>
-                        <p>Años de Liderazgo</p>
-                    </div>
-                </div>
             </div>
+        </section>
 
-            <!-- Valores Corporativos -->
-            <div class="section-header reveal" style="margin-bottom: 4.5rem;">
-                <span class="eyebrow">Pilares</span>
-                <h2 class="title-medium text-gradient-gold">Nuestros Valores</h2>
-            </div>
-            
-            <div class="about-features reveal reveal-delay-1" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-bottom: 7rem;">
-                <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-gavel"></i></div>
-                    <div class="feature-info">
-                        <h4>Transparencia Absoluta</h4>
-                        <p>Brindamos información verificable e historial catastral y legal completo de cada propiedad.</p>
-                    </div>
+        <!-- Eventos y capacitación -->
+        <section class="section-padding section-alt" id="eventos">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Eventos y capacitación</span>
+                    <h2 class="title-medium">Compartimos lo que sabemos.</h2>
+                    <p>Organizamos presentaciones, webinars y capacitaciones para inversionistas y asesores inmobiliarios. Explicamos el mercado con datos reales para que cada quien decida con criterio propio.</p>
                 </div>
-                
-                <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-search-dollar"></i></div>
-                    <div class="feature-info">
-                        <h4>Rigor Financiero</h4>
-                        <p>Analizamos variables macroeconómicas y de desarrollo urbano para asegurar plusvalía real.</p>
-                    </div>
-                </div>
-                
-                <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-medal"></i></div>
-                    <div class="feature-info">
-                        <h4>Servicio de Alta Gama</h4>
-                        <p>Garantizamos un trato personalizado, respetando el tiempo y las metas financieras de cada cliente.</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Sección Nuestro Equipo -->
-            <div class="section-header reveal" style="margin-bottom: 4.5rem;">
-                <span class="eyebrow">Dirección y Asesoría</span>
-                <h2 class="title-medium text-gradient-gold">Nuestro Equipo Asesor</h2>
-                <p>Profesionales dedicados a proteger y exponenciar tus inversiones patrimoniales.</p>
-            </div>
+                <div class="gallery-grid" id="eventosGaleria"></div>
 
-            <!-- Cuadrícula del Equipo Directivo de Alta Gama -->
-            <div class="testimonials-grid reveal reveal-delay-1" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
-                <!-- Miembro 1 -->
-                <div class="testimonial-card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 4rem 2.5rem; height: 100%;">
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                        <!-- Retrato con Marco Dorado Doble -->
-                        <div style="position: relative; margin-bottom: 2rem; width: 130px; height: 130px;">
-                            <div style="position: absolute; inset: -4px; border: 1.5px solid var(--color-gold); border-radius: 50%; opacity: 0.6;"></div>
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Carlos Torre" style="width: 100%; height: 100%; border-radius: 50%; border: 2.5px solid var(--color-bg-deep); object-fit: cover; box-shadow: var(--shadow-premium);">
+                <div class="event-signup reveal">
+                    <h3 class="title-small">Quiero enterarme del próximo evento</h3>
+                    <form class="contact-form inline-form" data-ghl-form data-perfil="evento" data-tags="eventos"
+                          data-success="Gracias, {nombre}. Te avisaremos por WhatsApp del próximo evento.">
+                        <div class="form-group">
+                            <label for="evName">Nombre *</label>
+                            <input type="text" id="evName" name="nombre" class="form-control" autocomplete="name" required>
                         </div>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Ing. Carlos Torre</h3>
-                        <span style="font-size: 0.72rem; font-weight: 700; color: var(--color-gold); letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">Director General y Socio Fundador</span>
-                        <p style="font-size: 0.88rem; color: var(--color-text-muted); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;">
-                            Con más de 15 años de experiencia en desarrollo inmobiliario y estructuración de fondos de inversión patrimoniales en el sureste del país.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Miembro 2 -->
-                <div class="testimonial-card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 4rem 2.5rem; height: 100%;">
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                        <!-- Retrato con Marco Dorado Doble -->
-                        <div style="position: relative; margin-bottom: 2rem; width: 130px; height: 130px;">
-                            <div style="position: absolute; inset: -4px; border: 1.5px solid var(--color-gold); border-radius: 50%; opacity: 0.6;"></div>
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Ana María Leal" style="width: 100%; height: 100%; border-radius: 50%; border: 2.5px solid var(--color-bg-deep); object-fit: cover; box-shadow: var(--shadow-premium);">
+                        <div class="form-group">
+                            <label for="evPhone">WhatsApp *</label>
+                            <input type="tel" id="evPhone" name="telefono" class="form-control" autocomplete="tel" inputmode="tel" required>
                         </div>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Lic. Ana María Leal</h3>
-                        <span style="font-size: 0.72rem; font-weight: 700; color: var(--color-gold); letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">Directora de Consultoría Patrimonial</span>
-                        <p style="font-size: 0.88rem; color: var(--color-text-muted); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;">
-                            Especialista en análisis de carteras inmobiliarias y perfilamiento financiero de inversión a mediano y largo plazo. Certificada por AMPI.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Miembro 3 -->
-                <div class="testimonial-card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 4rem 2.5rem; height: 100%;">
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                        <!-- Retrato con Marco Dorado Doble -->
-                        <div style="position: relative; margin-bottom: 2rem; width: 130px; height: 130px;">
-                            <div style="position: absolute; inset: -4px; border: 1.5px solid var(--color-gold); border-radius: 50%; opacity: 0.6;"></div>
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Roberto Esquivel" style="width: 100%; height: 100%; border-radius: 50%; border: 2.5px solid var(--color-bg-deep); object-fit: cover; box-shadow: var(--shadow-premium);">
+                        <div class="form-group">
+                            <label for="evCity">Ciudad</label>
+                            <input type="text" id="evCity" name="ciudad" class="form-control" autocomplete="address-level2">
                         </div>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Mtro. Roberto Esquivel</h3>
-                        <span style="font-size: 0.72rem; font-weight: 700; color: var(--color-gold); letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">Director Jurídico e Inmobiliario</span>
-                        <p style="font-size: 0.88rem; color: var(--color-text-muted); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;">
-                            Abogado corporativo con maestría en derecho urbano y notarial, encargado de auditar y garantizar la certeza jurídica de cada desarrollo en cartera.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-       4. FOOTER (PIE DE PÁGINA)
-       ========================================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-col footer-brand">
-                    <div class="footer-logo">
-                        <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
-                    </div>
-                    <p class="footer-tagline">
-                        Solidez, plusvalía y excelencia en inversiones patrimoniales y bienes raíces.
-                    </p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Navegación</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="desarrollos.html" class="footer-link">Desarrollos</a></li>
-                        <li><a href="nosotros.html" class="footer-link">Nosotros</a></li>
-                        <li><a href="partners.html" class="footer-link">Partners</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Aviso de Privacidad</a></li>
-                        <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
-                        <li><a href="#" class="footer-link">Certeza Jurídica</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Newsletter</h4>
-                    <p class="newsletter-sub">Recibe información sobre preventas exclusivas y reportes del sector inmobiliario.</p>
-                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!'); this.reset();">
-                        <input type="email" class="form-control" placeholder="Tu correo electrónico" required aria-label="Correo para newsletter">
-                        <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
+                        <div class="form-group">
+                            <label for="evPerfil">Soy</label>
+                            <select id="evPerfil" name="tipo_asistente" class="form-control form-select">
+                                <option value="inversionista">Inversionista</option>
+                                <option value="broker">Broker / asesor</option>
+                            </select>
+                        </div>
+                        <label class="checkbox-row">
+                            <input type="checkbox" name="acepta_privacidad" value="si" required>
+                            <span>Acepto el <a href="aviso-privacidad.html" target="_blank">aviso de privacidad</a>.</span>
+                        </label>
+                        <button type="submit" class="btn btn-primary submit-btn">Avísame <i class="far fa-bell"></i></button>
+                        <div class="form-feedback" role="status"></div>
                     </form>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Torre Inversiones. Todos los derechos reservados. Inversiones • Bienes Raíces.</p>
-                <div class="footer-bottom-links">
-                    <a href="contacto.html">Soporte</a>
-                    <a href="#">FAQ</a>
+        </section>
+
+        <section class="section-padding cta-final">
+            <div class="container reveal">
+                <h2 class="title-medium">Platiquemos de tu siguiente inversión.</h2>
+                <p>La asesoría no tiene costo para ti. Te explicamos opciones, riesgos y tiempos antes de que tomes cualquier decisión.</p>
+                <div class="hero-cta-group">
+                    <a href="contacto.html#agenda" class="btn btn-primary"><i class="far fa-calendar-alt"></i> Agendar asesoría</a>
                 </div>
             </div>
-        </div>
-    </footer>
+        </section>
+    </main>
 
-    <!-- Script del comportamiento dinámico -->
-    <script src="index.js?v=1.2"></script>
+    <div id="site-footer"></div>
+
+    <script src="config.js?v=2.1"></script>
+    <script src="desarrollos-data.js?v=2.0"></script>
+    <script src="layout.js?v=2.0"></script>
+    <script src="index.js?v=2.1"></script>
 </body>
 </html>

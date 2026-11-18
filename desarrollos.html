@@ -1,139 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- 
-      Archivo: desarrollos.html
-      Descripción: Catálogo de propiedades de Torre Inversiones.
-                   Incluye filtros dinámicos e información de departamentos, residencias y terrenos.
-      Última modificación: 2026-06-30
-      Autor: Antigravity AI
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explora nuestro catálogo de desarrollos y bienes raíces premium. Terrenos, departamentos y residencias de alta plusvalía.">
-    <title>Desarrollos Disponibles | Torre Inversiones</title>
-    
-    <!-- Favicon -->
+    <title>Desarrollos | Torre Inversiones</title>
+    <meta name="description" content="Desarrollos inmobiliarios y de agroinversión en el sureste de México que revisamos antes de recomendarte: desarrollador, situación legal, ubicación y números.">
+    <meta property="og:title" content="Desarrollos que revisamos antes de recomendarte | Torre Inversiones">
+    <meta property="og:image" content="Logo Torre Inversiones - Sin Fondo.png">
     <link rel="icon" type="image/png" href="Logo Torre Inversiones - Sin Fondo.png">
-    
-    <!-- FontAwesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Estilos Personalizados -->
-    <link rel="stylesheet" href="index.css?v=1.2">
+    <link rel="stylesheet" href="index.css?v=2.1">
 </head>
-<body>
+<body data-page="desarrollos" data-wa-msg="Hola, me gustaría información sobre los desarrollos de Torre Inversiones.">
 
-    <!-- ==========================================
-       1. CABECERA Y NAVEGACIÓN
-       ========================================== -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="nav-logo" id="navLogoLink">
-                    <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="desarrollos.html" class="nav-link active">Desarrollos</a></li>
-                    <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
-                    <li><a href="partners.html" class="nav-link">Partners</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-                
-                <div class="nav-actions">
-                    <a href="contacto.html" class="btn btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.65rem;">Asesoría Directa</a>
-                </div>
-                
-                <div class="nav-toggle" id="navToggleBtn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
-    <!-- ==========================================
-       2. HERO DE LA SUBPÁGINA
-       ========================================== -->
-    <section class="internal-hero">
-        <div class="container">
-            <h1 class="internal-hero-title text-gradient-gold">Nuestro Portafolio</h1>
-            <p class="internal-hero-subtitle">
-                Oportunidades inmobiliarias rigurosamente seleccionadas para garantizar el crecimiento de tu patrimonio y un estilo de vida inigualable.
-            </p>
-        </div>
-    </section>
+    <main>
+        <section class="internal-hero">
+            <div class="container">
+                <h1 class="internal-hero-title">Desarrollos que revisamos <span class="text-gradient-gold">antes de recomendarte.</span></h1>
+                <p class="internal-hero-subtitle">
+                    Cada proyecto de este catálogo pasó por nuestro análisis: quién lo desarrolla, su situación legal, su ubicación y sus números. Si quieres el detalle completo, pídelo y te lo enviamos.
+                </p>
+            </div>
+        </section>
 
-    <!-- ==========================================
-       3. SECCIÓN CATÁLOGO COMPLETO
-       ========================================== -->
-    <section class="section-padding" style="background-color: var(--color-bg-deep);">
-        <div class="container">
-            
-            <!-- Filtros Interactivos: se generan dinámicamente a partir de los tags que traiga la API -->
-            <div class="filter-tabs reveal" id="desarrollosFilterTabs"></div>
-            
-            <!-- Cuadrícula de Propiedades Ultra Simétrica -->
-            <div class="properties-grid reveal reveal-delay-1" id="allDesarrollosGrid" data-desarrollos-grid></div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-       4. FOOTER (PIE DE PÁGINA)
-       ========================================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-col footer-brand">
-                    <div class="footer-logo">
-                        <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
+        <section class="section-padding">
+            <div class="container">
+                <form class="catalog-filters" id="catalogFilters" aria-label="Filtrar desarrollos">
+                    <div class="filter-field">
+                        <label for="fZona">Ubicación</label>
+                        <select id="fZona" name="zona" class="form-control form-select"><option value="">Todas</option></select>
                     </div>
-                    <p class="footer-tagline">
-                        Solidez, plusvalía y excelencia en inversiones patrimoniales y bienes raíces.
-                    </p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Navegación</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="desarrollos.html" class="footer-link">Desarrollos</a></li>
-                        <li><a href="nosotros.html" class="footer-link">Nosotros</a></li>
-                        <li><a href="partners.html" class="footer-link">Partners</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Aviso de Privacidad</a></li>
-                        <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
-                        <li><a href="#" class="footer-link">Certeza Jurídica</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Newsletter</h4>
-                    <p class="newsletter-sub">Recibe información sobre preventas exclusivas y reportes del sector inmobiliario.</p>
-                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!'); this.reset();">
-                        <input type="email" class="form-control" placeholder="Tu correo electrónico" required aria-label="Correo para newsletter">
-                        <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Torre Inversiones. Todos los derechos reservados. Inversiones • Bienes Raíces.</p>
-                <div class="footer-bottom-links">
-                    <a href="contacto.html">Soporte</a>
-                    <a href="#">FAQ</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+                    <div class="filter-field">
+                        <label for="fTipo">Tipo</label>
+                        <select id="fTipo" name="tipo" class="form-control form-select"><option value="">Todos</option></select>
+                    </div>
+                    <div class="filter-field">
+                        <label for="fTicket">Ticket de entrada</label>
+                        <select id="fTicket" name="ticket" class="form-control form-select"><option value="">Cualquiera</option></select>
+                    </div>
+                    <div class="filter-field">
+                        <label for="fEtapa">Etapa</label>
+                        <select id="fEtapa" name="etapa" class="form-control form-select"><option value="">Todas</option></select>
+                    </div>
+                    <div class="filter-actions">
+                        <span id="catalogCount" class="catalog-count" aria-live="polite"></span>
+                        <button type="reset" class="btn-link">Limpiar filtros</button>
+                    </div>
+                </form>
 
-    <!-- Script del comportamiento dinámico -->
-    <script src="index.js?v=1.2"></script>
+                <div class="properties-grid" id="catalogGrid"></div>
+            </div>
+        </section>
+
+        <section class="section-padding cta-final">
+            <div class="container reveal">
+                <h2 class="title-medium">¿No ves lo que buscas?</h2>
+                <p>Cuéntanos tu objetivo y tu presupuesto. Si tenemos algo que encaje, te lo mostramos con todos sus números; si no, también te lo decimos.</p>
+                <div class="hero-cta-group">
+                    <a href="contacto.html#agenda" class="btn btn-primary"><i class="far fa-calendar-alt"></i> Agendar asesoría</a>
+                    <a href="#" data-wa="Hola, busco una inversión y me gustaría que me orienten." class="btn btn-secondary"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="config.js?v=2.1"></script>
+    <script src="desarrollos-data.js?v=2.0"></script>
+    <script src="layout.js?v=2.0"></script>
+    <script src="index.js?v=2.1"></script>
 </body>
 </html>

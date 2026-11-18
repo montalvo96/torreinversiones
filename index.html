@@ -1,336 +1,185 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- 
-      Archivo: index.html
-      Descripción: Página de Inicio (Resumen general) del sitio web multipágina de Torre Inversiones.
-                   Muestra de forma ejecutiva las propiedades destacadas, historia y aliados comerciales.
-      Última modificación: 2026-06-30
-      Autor: Antigravity AI
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Torre Inversiones es una firma líder en bienes raíces y proyectos patrimoniales de alta plusvalía. Encuentra propiedades y desarrollos exclusivos.">
-    <meta name="keywords" content="bienes raíces, inversiones inmobiliarias, terrenos de inversión, departamentos de lujo, plusvalía, Torre Inversiones, desarrollos premium">
-    <meta name="author" content="Torre Inversiones">
-    
-    <!-- SEO Open Graph -->
-    <meta property="og:title" content="Torre Inversiones | Inversión Patrimonial y Bienes Raíces Premium">
-    <meta property="og:description" content="Inversión inmobiliaria estratégica y asesoría de alta gama para construir y asegurar tu patrimonio.">
+    <title>Torre Inversiones | Invierte con información, no con promesas</title>
+    <meta name="description" content="Conectamos a inversionistas y brokers con desarrollos del sureste de México que analizamos a fondo: legalidad, desarrollador, números reales y riesgos.">
+    <meta property="og:title" content="Torre Inversiones | Invierte con información, no con promesas">
+    <meta property="og:description" content="Desarrollos inmobiliarios y agroinversión en el sureste de México, revisados a fondo. Te decimos lo bueno y también lo que debes saber antes de invertir.">
     <meta property="og:image" content="Logo Torre Inversiones - Sin Fondo.png">
     <meta property="og:type" content="website">
-    
-    <title>Torre Inversiones | Inicio - Desarrollos y Bienes Raíces</title>
-    
-    <!-- Favicon -->
+    <meta property="og:locale" content="es_MX">
     <link rel="icon" type="image/png" href="Logo Torre Inversiones - Sin Fondo.png">
-    
-    <!-- FontAwesome para Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Estilos Personalizados -->
-    <link rel="stylesheet" href="index.css?v=1.2">
+    <link rel="stylesheet" href="index.css?v=2.1">
 </head>
-<body>
+<body data-page="inicio" data-wa-msg="Hola, me gustaría hablar con un asesor de Torre Inversiones.">
 
-    <!-- ==========================================
-       1. CABECERA Y NAVEGACIÓN
-       ========================================== -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="nav-logo" id="navLogoLink">
-                    <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
-                    <li><a href="desarrollos.html" class="nav-link">Desarrollos</a></li>
-                    <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
-                    <li><a href="partners.html" class="nav-link">Partners</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-                
-                <div class="nav-actions">
-                    <a href="contacto.html" class="btn btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.65rem;">Asesoría Directa</a>
-                </div>
-                
-                <div class="nav-toggle" id="navToggleBtn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
-    <!-- ==========================================
-       2. SECCIÓN HERO (PORTADA)
-       ========================================== -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content reveal">
-                    <span class="eyebrow">Torre Inversiones</span>
-                    <h1 class="title-large text-gradient-gold">Invierte en tu futuro inmobiliario</h1>
-                    <p class="hero-description">
-                        Creamos el vehículo patrimonial perfecto para ti. Conectamos inversionistas con los desarrollos y bienes raíces más exclusivos y de mayor plusvalía proyectada de la región.
-                    </p>
-                    <div class="hero-cta-group">
-                        <a href="desarrollos.html" class="btn btn-primary">
-                            Ver Desarrollos <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="contacto.html" class="btn btn-secondary">
-                            Contactar Asesor <i class="far fa-comments"></i>
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="10" data-suffix="+">0</span>
-                            <span class="stat-label">Años de Trayectoria</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="500" data-suffix="+">0</span>
-                            <span class="stat-label">Clientes Satisfechos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="35" data-decimal="true" data-suffix="M+">0</span>
-                            <span class="stat-label">Plusvalía Generada ($)</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-visual reveal reveal-delay-2">
-                    <div class="hero-badge-glow"></div>
-                    <div class="hero-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Residencial Premium Torre Inversiones" class="hero-image">
-                        
-                        <!-- Floating Card Premium -->
-                        <div class="hero-floating-card">
-                            <div class="floating-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="floating-info">
-                                <h4>Inversión Segura</h4>
-                                <p>Proyectos regulados y avalados con certeza jurídica.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-       3. SECCIÓN DESARROLLOS DESTACADOS (RESUMEN)
-       ========================================== -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="eyebrow">Exclusividad</span>
-                <h2 class="title-medium text-gradient-gold">Proyectos Destacados</h2>
-                <p>Una muestra selecta de nuestras oportunidades de inversión patrimonial más codiciadas.</p>
-            </div>
-            
-            <div class="properties-grid reveal reveal-delay-1" id="featuredDesarrollosGrid" data-desarrollos-grid></div>
-            
-            <div class="properties-cta-container reveal">
-                <a href="desarrollos.html" class="btn btn-primary">Ver Catálogo Completo <i class="fas fa-th-list"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-       4. SECCIÓN NOSOTROS (RESUMEN)
-       ========================================== -->
-    <section class="section-padding about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-visual reveal">
-                    <div class="about-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Equipo de Torre Inversiones" class="about-img">
-                    </div>
-                    <span class="about-tag">Bienes Raíces de Lujo</span>
-                    <div class="about-experience-badge">
-                        <h3>10</h3>
-                        <p>Años de Liderazgo</p>
-                    </div>
-                </div>
-                
-                <div class="about-content reveal reveal-delay-2">
-                    <span class="eyebrow">Seguridad & Trayectoria</span>
-                    <h2 class="title-medium text-gradient-gold">La consultora patrimonial líder</h2>
-                    <p class="about-description">
-                        En Torre Inversiones, nos enfocamos en ofrecer una asesoría transparente, profesional y de alto impacto financiero. Garantizamos certeza jurídica y filtramos los mejores activos del mercado inmobiliario del sureste para que inviertas con tranquilidad.
-                    </p>
-                    
-                    <div class="about-features" style="margin-bottom: 2.5rem;">
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-balance-scale"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Certeza Legal</h4>
-                                <p>Proyectos minuciosamente auditados a nivel fiscal, catastral y de propiedad.</p>
-                            </div>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Rendimientos Sólidos</h4>
-                                <p>Enfoque analítico en la plusvalía real, flujos de renta y viabilidad urbana.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <a href="nosotros.html" class="btn btn-secondary">Conocer Nuestra Historia <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-       5. SECCIÓN PARTNERS (CON LOGOS VECTORIALES SVG)
-       ========================================== -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="eyebrow">Alianzas</span>
-                <h2 class="title-medium text-gradient-gold">Respaldados por los líderes</h2>
-                <p>Trabajamos en conjunto con instituciones de prestigio nacional e internacional para asegurar la viabilidad de tus proyectos patrimoniales.</p>
-            </div>
-            
-            <div class="partners-grid reveal reveal-delay-1">
-                
-                <!-- Partner 1: AMPI (Logotipo Vectorial SVG) -->
-                <div class="partner-logo-item">
-                    <svg class="partner-logo-img" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo AMPI">
-                        <path d="M25 45V15H32L39 30L46 15H53V45H47V25L41 38H37L31 25V45H25Z" fill="#c5a059" />
-                        <path d="M60 45V15H72C77 15 80 17 80 21C80 24 78 26 75 27C78 28 81 30 81 34C81 39 77 45 71 45H60ZM66 20V27H71C73 27 74 26 74 23.5C74 21 73 20 71 20H66ZM66 32V40H71C73 40 75 38 75 36C75 34 73 32 71 32H66Z" fill="#c5a059" />
-                        <path d="M90 45V15H96V45H90Z" fill="#c5a059" />
-                        <!-- Símbolo Escudo AMPI -->
-                        <path d="M125 15C115 15 110 20 110 20V32C110 40 118 45 125 47C132 45 140 40 140 32V20C140 20 135 15 125 15ZM125 41C121 39 116 35 116 30V23C120 22 123 20 125 19.5C127 20 130 22 134 23V30C134 35 129 39 125 41Z" fill="#c5a059" />
-                        <text x="148" y="36" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14" fill="#ffffff" letter-spacing="1">AMPI</text>
-                    </svg>
-                </div>
-                
-                <!-- Partner 2: BBVA (Logotipo Vectorial SVG) -->
-                <div class="partner-logo-item">
-                    <svg class="partner-logo-img" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo BBVA">
-                        <path d="M30 18H46C51.5 18 55 21 55 25.5C55 29 53 31.5 50 32.5C53.5 33.5 56 36.5 56 40.5C56 45.5 51.5 48 46 48H30V18ZM37.5 24V30.5H45C47.5 30.5 49 29.5 49 27.25C49 25 47.5 24 45 24H37.5ZM37.5 35.5V42H45.5C48 42 49.5 41 49.5 38.75C49.5 36.5 48 35.5 45.5 35.5H37.5Z" fill="#c5a059" />
-                        <path d="M60 18H76C81.5 18 85 21 85 25.5C85 29 83 31.5 80 32.5C83.5 33.5 86 36.5 86 40.5C86 45.5 81.5 48 76 48H60V18ZM67.5 24V30.5H75C77.5 30.5 79 29.5 79 27.25C79 25 77.5 24 75 24H67.5ZM67.5 35.5V42H75.5C78 42 79.5 41 79.5 38.75C79.5 36.5 78 35.5 75.5 35.5H67.5Z" fill="#c5a059" />
-                        <path d="M102 18H109.5L118 41L126.5 18H134L122 48H114L102 18Z" fill="#c5a059" />
-                        <path d="M142 48L153 18H160.5L171.5 48H163.5L160.5 39.5H152.5L149.5 48H142ZM154.5 34H158.5L156.5 28.5L154.5 34Z" fill="#c5a059" />
-                    </svg>
-                </div>
-                
-                <!-- Partner 3: BANORTE (Logotipo Vectorial SVG) -->
-                <div class="partner-logo-item">
-                    <svg class="partner-logo-img" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo BANORTE">
-                        <!-- Símbolo Isotipo Triángulo de Banorte -->
-                        <path d="M22 46H52L37 16L22 46Z" fill="#c5a059" />
-                        <path d="M37 23L45.5 40H28.5L37 23Z" fill="#020813" />
-                        <circle cx="37" cy="34" r="3" fill="#c5a059" />
-                        <!-- Tipografía -->
-                        <text x="64" y="32" font-family="'Montserrat', sans-serif" font-weight="800" font-size="15" fill="#ffffff" letter-spacing="0.5">BANORTE</text>
-                        <text x="64" y="44" font-family="'Montserrat', sans-serif" font-weight="500" font-size="9" fill="#9fb3ca" letter-spacing="1">PREFERENTE</text>
-                    </svg>
-                </div>
-                
-                <!-- Partner 4: DESARROLLOS CAPITAL (Logotipo Vectorial SVG) -->
-                <div class="partner-logo-item">
-                    <svg class="partner-logo-img" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Desarrollos Capital">
-                        <!-- Icono Geométrico Arquitectónico -->
-                        <path d="M25 45V20L35 15L45 20V45H25Z" stroke="#c5a059" stroke-width="2" stroke-linejoin="round" />
-                        <path d="M30 45V30H40V45" stroke="#c5a059" stroke-width="2" />
-                        <path d="M18 45H52" stroke="#c5a059" stroke-width="2" />
-                        <path d="M35 15V45" stroke="#c5a059" stroke-width="1" stroke-dasharray="2 2" />
-                        <!-- Texto corporativo -->
-                        <text x="60" y="30" font-family="'Montserrat', sans-serif" font-weight="800" font-size="12" fill="#ffffff" letter-spacing="1">DESARROLLOS</text>
-                        <text x="60" y="42" font-family="'Montserrat', sans-serif" font-weight="700" font-size="13" fill="#c5a059" letter-spacing="2">CAPITAL</text>
-                    </svg>
-                </div>
-            </div>
-            
-            <div class="properties-cta-container reveal" style="margin-top: 4.5rem;">
-                <a href="partners.html" class="btn btn-secondary">Ver Detalles de Alianzas <i class="fas fa-handshake"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-       6. SECCIÓN LLAMADO A LA ACCIÓN (CONTACTO RESUMEN)
-       ========================================== -->
-    <section class="section-padding" style="background-color: var(--color-bg-dark); border-top: 1px solid rgba(255,255,255,0.02);">
-        <div class="container">
-            <div style="text-align: center; max-width: 750px; margin: 0 auto;" class="reveal">
-                <span class="eyebrow">Contacto</span>
-                <h2 class="title-medium text-gradient-gold" style="margin-bottom: 1.5rem;">¿Listo para dar el siguiente paso?</h2>
-                <p style="color: var(--color-text-muted); font-weight: 300; margin-bottom: 3rem; line-height: 1.8; font-size: 1.05rem;">
-                    Nuestros asesores patrimoniales están disponibles para guiarte en tu estrategia de inversión. Diseñamos un portafolio a la medida de tu capacidad financiera y tus expectativas de rentabilidad.
+    <main>
+        <!-- Bloque 1 · Hero -->
+        <section class="hero-home" data-img="heroInicio">
+            <div class="hero-home-video" data-hero-video></div>
+            <div class="hero-home-overlay"></div>
+            <div class="container hero-home-content reveal">
+                <span class="eyebrow">Torre Inversiones · Sureste de México</span>
+                <h1 class="title-large">Invierte con información, <span class="text-gradient-gold">no con promesas.</span></h1>
+                <p class="hero-description">
+                    Conectamos a inversionistas y brokers con desarrollos del sureste de México que analizamos a fondo: legalidad, desarrollador, números reales y riesgos. Te decimos lo bueno y también lo que debes saber antes de invertir.
                 </p>
-                <a href="contacto.html" class="btn btn-primary" style="padding: 1.25rem 3rem;">Agendar Asesoría Gratuita <i class="far fa-calendar-alt"></i></a>
+                <div class="hero-cta-group">
+                    <a href="desarrollos.html" class="btn btn-primary">Ver desarrollos <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" data-wa="Hola, me gustaría hablar con un asesor de Torre Inversiones." class="btn btn-secondary"><i class="fab fa-whatsapp"></i> Hablar con un asesor</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==========================================
-       7. FOOTER (PIE DE PÁGINA)
-       ========================================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-col footer-brand">
-                    <div class="footer-logo">
-                        <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
+        <!-- Bloque 2 · Barra de confianza (solo cifras reales: se oculta si no hay ninguna en config.js) -->
+        <section class="trust-bar" id="trustBar" aria-label="Torre Inversiones en cifras">
+            <div class="container"><div class="trust-grid"></div></div>
+        </section>
+
+        <!-- Bloque 3 · ¿Qué buscas? -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Tu camino</span>
+                    <h2 class="title-medium">¿Qué buscas?</h2>
+                </div>
+                <div class="audience-grid">
+                    <a href="desarrollos.html" class="audience-card reveal">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Quiero invertir</h3>
+                        <p>Encuentra oportunidades inmobiliarias y de agroinversión revisadas por nuestro equipo.</p>
+                        <span class="audience-link">Ver desarrollos <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="partners.html#brokers" class="audience-card reveal reveal-delay-1">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Soy broker / asesor</h3>
+                        <p>Comercializa desarrollos verificados, con comisiones claras por contrato.</p>
+                        <span class="audience-link">Ir a Partners <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="partners.html#desarrolladores" class="audience-card reveal reveal-delay-2">
+                        <i class="fas fa-city"></i>
+                        <h3>Soy desarrollador</h3>
+                        <p>Lleva tu proyecto a una red activa de brokers e inversionistas.</p>
+                        <span class="audience-link">Ir a Partners <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloque 4 · Cómo trabajamos -->
+        <section class="section-padding section-alt">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Método</span>
+                    <h2 class="title-medium">Cómo trabajamos</h2>
+                </div>
+                <ol class="steps-grid">
+                    <li class="step-card reveal"><span class="step-num">1</span><h3>Te escuchamos.</h3><p>Entendemos tu objetivo, tu presupuesto y tus tiempos.</p></li>
+                    <li class="step-card reveal reveal-delay-1"><span class="step-num">2</span><h3>Filtramos.</h3><p>Solo presentamos proyectos que revisamos: desarrollador, documentación legal y números.</p></li>
+                    <li class="step-card reveal reveal-delay-2"><span class="step-num">3</span><h3>Te mostramos todo.</h3><p>Ventajas, riesgos y escenarios, con datos de fuentes oficiales.</p></li>
+                    <li class="step-card reveal reveal-delay-3"><span class="step-num">4</span><h3>Te acompañamos.</h3><p>Desde la primera visita hasta la firma, y después.</p></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Bloque 5 · Desarrollos destacados -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Catálogo</span>
+                    <h2 class="title-medium">Desarrollos destacados</h2>
+                </div>
+                <div class="properties-grid" id="featuredGrid"></div>
+                <div class="properties-cta-container">
+                    <a href="desarrollos.html" class="btn btn-primary">Ver todos <i class="fas fa-th-large"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloque 6 · Tipos de inversión -->
+        <section class="section-padding section-alt">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Opciones</span>
+                    <h2 class="title-medium">Tipos de inversión</h2>
+                </div>
+                <div class="cards-2">
+                    <div class="info-card reveal">
+                        <i class="fas fa-building"></i>
+                        <h3>Inmobiliario</h3>
+                        <p>Lotes, departamentos y proyectos en preventa en zonas de crecimiento del sureste.</p>
                     </div>
-                    <p class="footer-tagline">
-                        Solidez, plusvalía y excelencia en inversiones patrimoniales y bienes raíces.
-                    </p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Navegación</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="desarrollos.html" class="footer-link">Desarrollos</a></li>
-                        <li><a href="nosotros.html" class="footer-link">Nosotros</a></li>
-                        <li><a href="partners.html" class="footer-link">Partners</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Aviso de Privacidad</a></li>
-                        <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
-                        <li><a href="#" class="footer-link">Certeza Jurídica</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Newsletter</h4>
-                    <p class="newsletter-sub">Recibe información sobre preventas exclusivas y reportes del sector inmobiliario.</p>
-                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!'); this.reset();">
-                        <input type="email" class="form-control" placeholder="Tu correo electrónico" required aria-label="Correo para newsletter">
-                        <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
-                    </form>
+                    <div class="info-card reveal reveal-delay-1">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Tierra productiva y agroinversión</h3>
+                        <p>Proyectos ligados a cultivos (cítricos), para diversificar más allá del ladrillo.</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Torre Inversiones. Todos los derechos reservados. Inversiones • Bienes Raíces.</p>
-                <div class="footer-bottom-links">
-                    <a href="contacto.html">Soporte</a>
-                    <a href="#">FAQ</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-    <!-- Script del comportamiento dinámico -->
-    <script src="index.js?v=1.2"></script>
+        <!-- Bloque 7 · Nuestros principios -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Valores</span>
+                    <h2 class="title-medium">Nuestros principios</h2>
+                </div>
+                <div class="cards-4">
+                    <div class="principle reveal"><h3>Integridad.</h3><p>Si un proyecto no nos convence, no lo recomendamos.</p></div>
+                    <div class="principle reveal reveal-delay-1"><h3>Transparencia.</h3><p>Te mostramos los datos favorables y los desfavorables.</p></div>
+                    <div class="principle reveal reveal-delay-2"><h3>Análisis.</h3><p>Decisiones con números y fuentes, no con emociones.</p></div>
+                    <div class="principle reveal reveal-delay-3"><h3>Acompañamiento.</h3><p>Una persona real te responde en cada etapa.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloque 8 · Banda de eventos -->
+        <section class="events-band" data-img="bandaEventos">
+            <div class="events-band-overlay"></div>
+            <div class="container events-band-content reveal">
+                <h2 class="title-medium">Hablamos de inversión de frente.</h2>
+                <p>Presentamos oportunidades y capacitamos asesores en eventos presenciales y en línea en distintas ciudades del país.</p>
+                <a href="nosotros.html#eventos" class="btn btn-secondary">Conócenos <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- Bloque 9 · Testimonios (solo reales y autorizados; se omite si no hay en config.js) -->
+        <section class="section-padding" id="testimonios">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Testimonios</span>
+                    <h2 class="title-medium">Lo que dicen quienes invierten con nosotros</h2>
+                </div>
+                <div class="testimonials-grid"></div>
+            </div>
+        </section>
+
+        <!-- Bloque 10 · CTA final -->
+        <section class="section-padding cta-final">
+            <div class="container reveal">
+                <h2 class="title-medium">¿Tienes capital y quieres ponerlo a trabajar con claridad?</h2>
+                <p>Agenda una asesoría sin costo. Te explicamos opciones, riesgos y tiempos antes de que tomes cualquier decisión.</p>
+                <div class="hero-cta-group">
+                    <a href="contacto.html#agenda" class="btn btn-primary"><i class="far fa-calendar-alt"></i> Agendar asesoría</a>
+                    <a href="#" data-wa="Hola, quiero agendar una asesoría con Torre Inversiones." class="btn btn-secondary"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="config.js?v=2.1"></script>
+    <script src="desarrollos-data.js?v=2.0"></script>
+    <script src="layout.js?v=2.0"></script>
+    <script src="index.js?v=2.1"></script>
 </body>
 </html>

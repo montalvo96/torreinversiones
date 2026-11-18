@@ -1,0 +1,4 @@
+# URLs limpias para hosting Apache (cPanel)
+RewriteEngine On
+RewriteRule ^desarrollos/([a-z0-9-]+)/?$ desarrollo.html [L,QSA]
+RewriteRule ^landing/([a-z0-9-]+)/?$ landing.html [L,QSA]

@@ -1,225 +1,130 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- 
-      Archivo: contacto.html
-      Descripción: Formulario exclusivo de contacto y canales de atención de Torre Inversiones.
-      Última modificación: 2026-06-30
-      Autor: Antigravity AI
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ponte en contacto con Torre Inversiones. Solicita asesoría de inversión patrimonial personalizada.">
     <title>Contacto | Torre Inversiones</title>
-    
-    <!-- Favicon -->
+    <meta name="description" content="Escríbenos por WhatsApp, teléfono o correo, o agenda una asesoría sin costo. Te responde una persona de nuestro equipo en menos de 24 horas hábiles.">
+    <meta property="og:title" content="Hablemos de tu siguiente inversión | Torre Inversiones">
+    <meta property="og:image" content="Logo Torre Inversiones - Sin Fondo.png">
     <link rel="icon" type="image/png" href="Logo Torre Inversiones - Sin Fondo.png">
-    
-    <!-- FontAwesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Estilos Personalizados -->
-    <link rel="stylesheet" href="index.css?v=1.2">
+    <link rel="stylesheet" href="index.css?v=2.1">
 </head>
-<body>
+<body data-page="contacto" data-wa-msg="Hola, me gustaría recibir asesoría de Torre Inversiones.">
 
-    <!-- ==========================================
-       1. CABECERA Y NAVEGACIÓN
-       ========================================== -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="nav-logo" id="navLogoLink">
-                    <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="desarrollos.html" class="nav-link">Desarrollos</a></li>
-                    <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
-                    <li><a href="partners.html" class="nav-link">Partners</a></li>
-                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
-                </ul>
-                
-                <div class="nav-actions">
-                    <a href="contacto.html" class="btn btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.65rem;">Asesoría Directa</a>
-                </div>
-                
-                <div class="nav-toggle" id="navToggleBtn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
-    <!-- ==========================================
-       2. HERO DE LA SUBPÁGINA
-       ========================================== -->
-    <section class="internal-hero">
-        <div class="container">
-            <h1 class="internal-hero-title text-gradient-gold">Hablemos de tu Futuro</h1>
-            <p class="internal-hero-subtitle">
-                Agenda una sesión estratégica uno a uno con nuestros asesores de inversión patrimonial. Sin compromisos, con claridad absoluta.
-            </p>
-        </div>
-    </section>
+    <main>
+        <section class="internal-hero">
+            <div class="container">
+                <h1 class="internal-hero-title">Hablemos de tu <span class="text-gradient-gold">siguiente inversión.</span></h1>
+                <p class="internal-hero-subtitle">
+                    Escríbenos por el medio que prefieras. Te responde una persona de nuestro equipo, en menos de 24 horas hábiles.
+                </p>
+            </div>
+        </section>
 
-    <!-- ==========================================
-       3. SECCIÓN FORMULARIO Y CANALES DE CONTACTO
-       ========================================== -->
-    <section class="section-padding" style="background-color: var(--color-bg-deep);">
-        <div class="container">
-            <div class="reveal">
+        <section class="section-padding">
+            <div class="container">
                 <div class="contact-grid">
-                    
-                    <!-- Información de Contacto (Izquierda) -->
-                    <div class="contact-info">
-                        <span class="eyebrow">Canales Directos</span>
-                        <h2 class="title-medium text-gradient-gold">Contacto Oficial</h2>
-                        <p class="contact-sub">
-                            Estamos disponibles para asistirte por llamada, mensaje de texto o correo electrónico. También puedes seguirnos en nuestras redes sociales para conocer las últimas preventas.
-                        </p>
-                        
-                        <div class="contact-channels">
-                            <div class="channel-card">
-                                <div class="channel-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div class="channel-info">
-                                    <label>Teléfono de Atención</label>
-                                    <span>+52 (999) 496-0094</span>
-                                </div>
-                            </div>
-                            
-                            <div class="channel-card">
-                                <div class="channel-icon">
-                                    <i class="fab fa-whatsapp"></i>
-                                </div>
-                                <div class="channel-info">
-                                    <label>WhatsApp Directo</label>
-                                    <span><a href="https://wa.me/529994960094?text=Hola,%20solicito%20asesoria%20de%20Torre%20Inversiones" target="_blank" rel="noopener noreferrer" style="color: #29cf72; font-weight: 700;">+52 (999) 496-0094</a></span>
-                                </div>
-                            </div>
-                            
-                            <div class="channel-card">
-                                <div class="channel-icon">
-                                    <i class="far fa-envelope"></i>
-                                </div>
-                                <div class="channel-info">
-                                    <label>Correo de Negocios</label>
-                                    <span>contacto@torreinversiones.com</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        </div>
+                    <div class="contact-info reveal">
+                        <span class="eyebrow">Canales</span>
+                        <h2 class="title-medium">Contacto directo</h2>
+                        <div class="contact-channels" id="contactChannels"></div>
                     </div>
-                    
-                    <!-- Formulario de Contacto Premium (Derecha) -->
-                    <div class="contact-form-wrapper">
-                        <form class="contact-form" id="contactForm">
+
+                    <div class="contact-form-wrapper reveal reveal-delay-1">
+                        <form class="contact-form" id="contactForm" data-ghl-form data-tags="formulario-contacto">
                             <div class="form-group">
-                                <label for="formName">Nombre Completo *</label>
-                                <input type="text" id="formName" class="form-control" placeholder="Ej. Juan Pérez" required>
+                                <label for="cName">Nombre *</label>
+                                <input type="text" id="cName" name="nombre" class="form-control" autocomplete="name" required>
                             </div>
-                            
                             <div class="form-row-2">
                                 <div class="form-group">
-                                    <label for="formEmail">Correo Electrónico *</label>
-                                    <input type="email" id="formEmail" class="form-control" placeholder="juan@ejemplo.com" required>
+                                    <label for="cPhone">WhatsApp *</label>
+                                    <input type="tel" id="cPhone" name="telefono" class="form-control" autocomplete="tel" inputmode="tel" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="formPhone">Teléfono / WhatsApp *</label>
-                                    <input type="tel" id="formPhone" class="form-control" placeholder="999 123 4567" required>
+                                    <label for="cEmail">Correo *</label>
+                                    <input type="email" id="cEmail" name="correo" class="form-control" autocomplete="email" required>
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="formSelect">Tipo de Interés</label>
-                                <select id="formSelect" class="form-control form-select">
-                                    <option value="departamentos">Departamentos de Lujo</option>
-                                    <option value="residencial">Casas y Residencias</option>
-                                    <option value="terrenos">Lotes e Inversión Patrimonial</option>
-                                    <option value="asesoria">Asesoría General</option>
-                                </select>
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="cPerfil">Soy *</label>
+                                    <select id="cPerfil" name="perfil" class="form-control form-select" required>
+                                        <option value="">Selecciona</option>
+                                        <option value="inversionista">Inversionista</option>
+                                        <option value="broker">Broker / asesor</option>
+                                        <option value="desarrollador">Desarrollador</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cInteres">Interés</label>
+                                    <select id="cInteres" name="interes" class="form-control form-select">
+                                        <option value="no-se-aun">No sé aún</option>
+                                        <option value="inmobiliario">Inmobiliario</option>
+                                        <option value="agroinversion">Agroinversión</option>
+                                    </select>
+                                </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="formMessage">Mensaje (Opcional)</label>
-                                <textarea id="formMessage" class="form-control" placeholder="Escribe aquí tu consulta..."></textarea>
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="cRango">Rango de inversión</label>
+                                    <select id="cRango" name="rango_inversion" class="form-control form-select">
+                                        <option value="">Prefiero no decir</option>
+                                        <option value="hasta-500k">Hasta $500 mil</option>
+                                        <option value="500k-1m">$500 mil – $1 millón</option>
+                                        <option value="1m-3m">$1 – $3 millones</option>
+                                        <option value="mas-3m">Más de $3 millones</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cFuente">¿Cómo nos conociste?</label>
+                                    <select id="cFuente" name="como_nos_conociste" class="form-control form-select">
+                                        <option value="">Selecciona</option>
+                                        <option value="facebook-instagram">Facebook / Instagram</option>
+                                        <option value="evento">Evento o webinar</option>
+                                        <option value="recomendacion">Recomendación</option>
+                                        <option value="google">Google</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
                             </div>
-                            
-                            <button type="submit" class="btn btn-primary submit-btn">Enviar Mensaje <i class="far fa-paper-plane"></i></button>
-                            
-                            <!-- Mensaje de Feedback -->
-                            <div class="form-feedback" id="formFeedback"></div>
+                            <div class="form-group">
+                                <label for="cMsg">Mensaje</label>
+                                <textarea id="cMsg" name="mensaje" class="form-control" placeholder="Cuéntanos qué buscas"></textarea>
+                            </div>
+                            <label class="checkbox-row">
+                                <input type="checkbox" name="acepta_privacidad" value="si" required>
+                                <span>He leído y acepto el <a href="aviso-privacidad.html" target="_blank">aviso de privacidad</a>. *</span>
+                            </label>
+                            <button type="submit" class="btn btn-primary submit-btn">Enviar <i class="far fa-paper-plane"></i></button>
+                            <div class="form-feedback" id="formFeedback" role="status"></div>
                         </form>
                     </div>
-                    
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==========================================
-       4. FOOTER (PIE DE PÁGINA)
-       ========================================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-col footer-brand">
-                    <div class="footer-logo">
-                        <img src="Logo Torre Inversiones - Sin Fondo.png" alt="Torre Inversiones Logo">
-                    </div>
-                    <p class="footer-tagline">
-                        Solidez, plusvalía y excelencia en inversiones patrimoniales y bienes raíces.
-                    </p>
+        <section class="section-padding section-alt" id="agenda">
+            <div class="container narrow">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Agenda</span>
+                    <h2 class="title-medium">Agenda tu asesoría</h2>
+                    <p>Por videollamada o presencial. La asesoría no tiene costo para ti.</p>
                 </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Navegación</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="desarrollos.html" class="footer-link">Desarrollos</a></li>
-                        <li><a href="nosotros.html" class="footer-link">Nosotros</a></li>
-                        <li><a href="partners.html" class="footer-link">Partners</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Aviso de Privacidad</a></li>
-                        <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
-                        <li><a href="#" class="footer-link">Certeza Jurídica</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Newsletter</h4>
-                    <p class="newsletter-sub">Recibe información sobre preventas exclusivas y reportes del sector inmobiliario.</p>
-                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!'); this.reset();">
-                        <input type="email" class="form-control" placeholder="Tu correo electrónico" required aria-label="Correo para newsletter">
-                        <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
+                <div id="agendaEmbed" class="agenda-embed"></div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Torre Inversiones. Todos los derechos reservados. Inversiones • Bienes Raíces.</p>
-                <div class="footer-bottom-links">
-                    <a href="contacto.html">Soporte</a>
-                    <a href="#">FAQ</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        </section>
+    </main>
 
-    <!-- Script del comportamiento dinámico -->
-    <script src="index.js?v=1.2"></script>
+    <div id="site-footer"></div>
+
+    <script src="config.js?v=2.1"></script>
+    <script src="desarrollos-data.js?v=2.0"></script>
+    <script src="layout.js?v=2.0"></script>
+    <script src="index.js?v=2.1"></script>
 </body>
 </html>
