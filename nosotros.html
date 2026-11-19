@@ -9,22 +9,24 @@
     <meta property="og:image" content="Logo Torre Inversiones - Sin Fondo.png">
     <link rel="icon" type="image/png" href="Logo Torre Inversiones - Sin Fondo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css?v=2.1">
+    <link rel="stylesheet" href="index.css?v=6.8">
 </head>
-<body data-page="nosotros" data-wa-msg="Hola, me gustaría agendar una asesoría con Torre Inversiones.">
+<body class="theme-light" data-page="nosotros" data-wa-msg="Hola, me gustaría agendar una asesoría con Torre Inversiones.">
 
     <div id="site-header"></div>
 
     <main>
         <!-- Hero: foto grande de Dani frente a una audiencia (config.imagenes.nosotrosHero) -->
-        <section class="hero-home hero-short" data-img="nosotrosHero">
-            <div class="hero-home-overlay"></div>
-            <div class="container hero-home-content reveal">
+        <section class="hero-home hero-short hero-split-section">
+            <div class="container hero-split">
+            <div class="hero-home-content reveal">
                 <span class="eyebrow">Nosotros</span>
                 <h1 class="title-large">Detrás de cada recomendación hay <span class="text-gradient-gold">alguien que da la cara.</span></h1>
                 <p class="hero-description">
                     Torre Inversiones nace para que invertir en bienes raíces deje de ser un acto de fe. Conectamos capital con proyectos reales, y lo hacemos con información completa.
                 </p>
+            </div>
+            <figure class="media-split-photo hero-figure reveal reveal-delay-1" data-img-tag="nosotrosHero" data-sizes="(min-width: 900px) 45vw, 100vw" data-alt="Daniel Torre con asistentes en un evento de Torre Inversiones"></figure>
             </div>
         </section>
 
@@ -91,7 +93,7 @@
                     <p>Organizamos presentaciones, webinars y capacitaciones para inversionistas y asesores inmobiliarios. Explicamos el mercado con datos reales para que cada quien decida con criterio propio.</p>
                 </div>
 
-                <div class="gallery-grid" id="eventosGaleria"></div>
+                <div class="photo-carousel" id="eventosGaleria" data-excluir="evento-04,evento-06,evento-07,evento-08,evento-10,evento-11,evento-12" aria-label="Fotos de nuestros eventos"></div>
 
                 <div class="event-signup reveal">
                     <h3 class="title-small">Quiero enterarme del próximo evento</h3>
@@ -140,9 +142,9 @@
 
     <div id="site-footer"></div>
 
-    <script src="config.js?v=2.1"></script>
+    <script src="config.js?v=4.5"></script>
     <script src="desarrollos-data.js?v=2.0"></script>
-    <script src="layout.js?v=2.0"></script>
-    <script src="index.js?v=2.1"></script>
+    <script src="layout.js?v=2.8"></script>
+    <script src="index.js?v=4.1"></script>
 </body>
 </html>

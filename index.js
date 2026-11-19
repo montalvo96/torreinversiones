@@ -325,11 +325,17 @@
         return `<div class="video-embed"><iframe src="${esc(src)}" title="Video del desarrollo" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
     };
 
+    /* Fotos de eventos: versión ligera (900px) para mosaicos y cinta; original (2400px) para pantallas grandes y visor */
+    const miniatura = (src) => String(src).replace('img/eventos/', 'img/eventos/thumb/');
+    const fotoResponsive = (src, alt, sizes) => /img\/eventos\//.test(src)
+        ? `<img src="${esc(miniatura(src))}" srcset="${esc(miniatura(src))} 900w, ${esc(String(src).replace('img/eventos/', 'img/eventos/md/'))} 1600w, ${esc(src)} 2400w" sizes="${sizes}" data-full="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async">`
+        : `<img src="${esc(src)}" data-full="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
+
     const galeriaEventos = (ev) => ev.map(e => {
         const cap = [e.ciudad, e.fecha].filter(Boolean).join(' · ');
         return `
             <figure class="gallery-item">
-                <img src="${esc(e.src)}" alt="${esc(e.alt || 'Evento de Torre Inversiones')}" loading="lazy" decoding="async">
+                ${fotoResponsive(e.src, e.alt || 'Evento de Torre Inversiones', '(min-width: 768px) 50vw, 100vw')}
                 ${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}
             </figure>`;
     }).join('');
@@ -494,7 +500,7 @@
                 </div>
             </aside>
         </div>
-        ${landing && (C.eventos || []).length ? `
+        ${(C.eventos || []).length ? `
         <section class="section-padding section-alt landing-eventos" id="eventos">
             <div class="container">
                 <div class="section-header">
@@ -502,7 +508,7 @@
                     <h2 class="title-medium">Hablamos de inversión de frente.</h2>
                     <p>Presentamos cada proyecto en persona, con datos reales, ante inversionistas y asesores.</p>
                 </div>
-                <div class="gallery-grid">${galeriaEventos(C.eventos)}</div>
+                <div class="gallery-grid gallery-mosaic">${galeriaEventos(C.eventos)}</div>
             </div>
         </section>` : ''}
         ${landing ? '' : `
@@ -578,7 +584,10 @@
         }
         document.querySelectorAll('[data-img-tag]').forEach(el => {
             const src = img[el.dataset.imgTag];
-            if (src) el.innerHTML = `<img src="${esc(src)}" alt="${esc(el.dataset.alt || '')}" loading="lazy" decoding="async">`;
+            if (!src) return;
+            el.querySelectorAll('.ph').forEach(ph => ph.remove());
+            el.insertAdjacentHTML('afterbegin', fotoResponsive(src, el.dataset.alt || '', el.dataset.sizes || '(min-width: 900px) 60vw, 100vw'));
+            el.classList.add('has-img');
         });
     };
 
@@ -591,7 +600,72 @@
                 .map(l => `<figure class="gallery-item">${placeholder(`[Foto: ${l}]`, 'fa-camera')}</figure>`).join('');
             return;
         }
-        el.innerHTML = galeriaEventos(ev);
+        if (!el.classList.contains('photo-carousel')) { el.innerHTML = galeriaEventos(ev); return; }
+        // Carrusel: nunca repite fotos. Se omiten las que ya aparecen en esta página
+        // (las de data-img-tag automáticamente + las tomas casi iguales de data-excluir)
+        const enPagina = [...document.querySelectorAll('[data-img-tag] img[data-full]')].map(i => i.dataset.full);
+        const excluir = (el.dataset.excluir || '').split(',').map(x => x.trim()).filter(Boolean);
+        const fotos = ev.filter(e => !enPagina.includes(e.src) && !excluir.some(x => e.src.includes(x)));
+        el.innerHTML = `<div class="photo-carousel-track">${galeriaEventos(fotos)}</div>`;
+        // Sin copias: si las fotos no caben, la cinta va y viene; si caben, se queda centrada
+        const track = el.firstElementChild;
+        const medir = () => {
+            const sobra = track.scrollWidth - el.clientWidth;
+            el.classList.toggle('is-moving', sobra > 0);
+            el.style.setProperty('--carousel-shift', `${-Math.max(sobra, 0)}px`);
+            el.style.setProperty('--carousel-dur', `${Math.max(12, sobra / 25)}s`);
+        };
+        track.querySelectorAll('img').forEach(i => i.addEventListener('load', medir));
+        window.addEventListener('resize', medir);
+        medir();
+    };
+
+    /* Visor de fotos: clic en cualquier foto de una galería para verla en grande */
+    const initVisor = () => {
+        let box, imgs = [], idx = 0;
+        const mostrar = (i) => {
+            idx = (i + imgs.length) % imgs.length;
+            const img = $('img', box);
+            img.src = imgs[idx].dataset.full || imgs[idx].currentSrc || imgs[idx].src;
+            img.alt = imgs[idx].alt;
+            $('.lightbox-count', box).textContent = `${idx + 1} / ${imgs.length}`;
+        };
+        const cerrar = () => { box.classList.remove('open'); document.body.style.overflow = ''; };
+        const crear = () => {
+            box = document.createElement('div');
+            box.className = 'lightbox';
+            box.setAttribute('role', 'dialog');
+            box.setAttribute('aria-modal', 'true');
+            box.setAttribute('aria-label', 'Galería de fotos');
+            box.innerHTML = `
+                <button class="lightbox-btn lightbox-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+                <button class="lightbox-btn lightbox-prev" aria-label="Foto anterior"><i class="fas fa-chevron-left"></i></button>
+                <img alt="">
+                <button class="lightbox-btn lightbox-next" aria-label="Foto siguiente"><i class="fas fa-chevron-right"></i></button>
+                <span class="lightbox-count"></span>`;
+            document.body.appendChild(box);
+            box.addEventListener('click', (e) => {
+                if (e.target.closest('.lightbox-prev')) mostrar(idx - 1);
+                else if (e.target.closest('.lightbox-next')) mostrar(idx + 1);
+                else if (e.target === box || e.target.closest('.lightbox-close')) cerrar();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (!box.classList.contains('open')) return;
+                if (e.key === 'Escape') cerrar();
+                if (e.key === 'ArrowLeft') mostrar(idx - 1);
+                if (e.key === 'ArrowRight') mostrar(idx + 1);
+            });
+        };
+        document.addEventListener('click', (e) => {
+            const img = e.target.closest('.gallery-item img');
+            if (!img) return;
+            if (!box) crear();
+            imgs = [...img.closest('.gallery-grid, .photo-carousel').querySelectorAll('.gallery-item:not([aria-hidden]) img')];
+            mostrar(Math.max(0, imgs.findIndex(i => i.dataset.full === img.dataset.full)));
+            box.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            $('.lightbox-close', box).focus();
+        });
     };
 
     const initAliados = () => {
@@ -640,6 +714,7 @@
     initCifras();
     initTestimonios();
     initEventos();
+    initVisor();
     initAliados();
     initContacto();
     initDestacados();

@@ -14,26 +14,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css?v=2.1">
+    <link rel="stylesheet" href="index.css?v=6.8">
 </head>
-<body data-page="inicio" data-wa-msg="Hola, me gustaría hablar con un asesor de Torre Inversiones.">
+<body class="theme-light" data-page="inicio" data-wa-msg="Hola, me gustaría hablar con un asesor de Torre Inversiones.">
 
     <div id="site-header"></div>
 
     <main>
-        <!-- Bloque 1 · Hero -->
-        <section class="hero-home" data-img="heroInicio">
-            <div class="hero-home-video" data-hero-video></div>
-            <div class="hero-home-overlay"></div>
-            <div class="container hero-home-content reveal">
-                <span class="eyebrow">Torre Inversiones · Sureste de México</span>
-                <h1 class="title-large">Invierte con información, <span class="text-gradient-gold">no con promesas.</span></h1>
-                <p class="hero-description">
-                    Conectamos a inversionistas y brokers con desarrollos del sureste de México que analizamos a fondo: legalidad, desarrollador, números reales y riesgos. Te decimos lo bueno y también lo que debes saber antes de invertir.
-                </p>
-                <div class="hero-cta-group">
-                    <a href="desarrollos.html" class="btn btn-primary">Ver desarrollos <i class="fas fa-arrow-right"></i></a>
-                    <a href="#" data-wa="Hola, me gustaría hablar con un asesor de Torre Inversiones." class="btn btn-secondary"><i class="fab fa-whatsapp"></i> Hablar con un asesor</a>
+        <!-- Bloque 1 · Hero (textos del brief) -->
+        <section class="hero-home hero-editorial">
+            <div class="container hero-ed">
+                <p class="hero-wordmark" aria-hidden="true"><span class="wm-main">TORRE</span><span class="wm-sub">INVERSIONES</span></p>
+                <figure class="media-split-photo hero-ed-photo" data-img-tag="heroInicio" data-sizes="(min-width: 900px) 30vw, 80vw" data-alt="Daniel Torre presentando frente a la audiencia en un evento de Torre Inversiones"></figure>
+                <div class="hero-ed-left reveal">
+                    <h1 class="hero-ed-title">Invierte con información, <span class="accent">no con promesas.</span></h1>
+                    <a href="desarrollos.html" class="btn btn-dark">Ver desarrollos</a>
+                </div>
+                <div class="hero-ed-right reveal reveal-delay-1">
+                    <p class="hero-ed-sub">Conectamos a inversionistas y brokers con desarrollos del sureste de México que analizamos a fondo: legalidad, desarrollador, números reales y riesgos. Te decimos lo bueno y también lo que debes saber antes de invertir.</p>
+                    <a href="#" data-wa="Hola, me gustaría hablar con un asesor de Torre Inversiones." class="btn btn-outline-dark"><i class="fab fa-whatsapp"></i> Hablar con un asesor</a>
                 </div>
             </div>
         </section>
@@ -43,80 +42,79 @@
             <div class="container"><div class="trust-grid"></div></div>
         </section>
 
-        <!-- Bloque 3 · ¿Qué buscas? -->
-        <section class="section-padding">
+        <!-- Bloque 3 · ¿Qué buscas? (selector de público) -->
+        <section class="band-dark">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="eyebrow">Tu camino</span>
-                    <h2 class="title-medium">¿Qué buscas?</h2>
-                </div>
-                <div class="audience-grid">
-                    <a href="desarrollos.html" class="audience-card reveal">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Quiero invertir</h3>
-                        <p>Encuentra oportunidades inmobiliarias y de agroinversión revisadas por nuestro equipo.</p>
-                        <span class="audience-link">Ver desarrollos <i class="fas fa-arrow-right"></i></span>
+                <h2 class="band-title reveal">¿Qué buscas?</h2>
+                <div class="audience-grid band-grid">
+                    <a href="desarrollos.html" class="audience-card band-card">
+                        <span class="band-thumb"><i class="fas fa-chart-line"></i></span>
+                        <span class="band-text">
+                            <h3>Quiero invertir</h3>
+                            <p>Encuentra oportunidades inmobiliarias y de agroinversión revisadas por nuestro equipo.</p>
+                            <span class="audience-link">Desarrollos <i class="fas fa-arrow-right"></i></span>
+                        </span>
                     </a>
-                    <a href="partners.html#brokers" class="audience-card reveal reveal-delay-1">
-                        <i class="fas fa-user-tie"></i>
-                        <h3>Soy broker / asesor</h3>
-                        <p>Comercializa desarrollos verificados, con comisiones claras por contrato.</p>
-                        <span class="audience-link">Ir a Partners <i class="fas fa-arrow-right"></i></span>
+                    <a href="partners.html#brokers" class="audience-card band-card">
+                        <span class="band-thumb"><i class="fas fa-user-tie"></i></span>
+                        <span class="band-text">
+                            <h3>Soy broker / asesor</h3>
+                            <p>Comercializa desarrollos verificados, con comisiones claras por contrato.</p>
+                            <span class="audience-link">Partners <i class="fas fa-arrow-right"></i></span>
+                        </span>
                     </a>
-                    <a href="partners.html#desarrolladores" class="audience-card reveal reveal-delay-2">
-                        <i class="fas fa-city"></i>
-                        <h3>Soy desarrollador</h3>
-                        <p>Lleva tu proyecto a una red activa de brokers e inversionistas.</p>
-                        <span class="audience-link">Ir a Partners <i class="fas fa-arrow-right"></i></span>
+                    <a href="partners.html#desarrolladores" class="audience-card band-card">
+                        <span class="band-thumb"><i class="fas fa-city"></i></span>
+                        <span class="band-text">
+                            <h3>Soy desarrollador</h3>
+                            <p>Lleva tu proyecto a una red activa de brokers e inversionistas.</p>
+                            <span class="audience-link">Partners <i class="fas fa-arrow-right"></i></span>
+                        </span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Bloque 4 · Cómo trabajamos -->
-        <section class="section-padding section-alt">
+        <!-- Bloque 4 · Cómo trabajamos (4 pasos) -->
+        <section class="feature-banner">
+            <figure class="media-split-photo feature-banner-media" data-img-tag="inicioTipos" data-sizes="(min-width: 900px) 60vw, 100vw" data-alt="Equipo de Torre Inversiones con asistentes a un evento"></figure>
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="eyebrow">Método</span>
-                    <h2 class="title-medium">Cómo trabajamos</h2>
+                <div class="feature-banner-content">
+                    <h2 class="banner-title reveal">Cómo<br>trabajamos</h2>
+                    <ol class="banner-steps banner-steps-full">
+                        <li><span>01</span><div><h3>Te escuchamos.</h3><p>Entendemos tu objetivo, tu presupuesto y tus tiempos.</p></div></li>
+                        <li><span>02</span><div><h3>Filtramos.</h3><p>Solo presentamos proyectos que revisamos: desarrollador, documentación legal y números.</p></div></li>
+                        <li><span>03</span><div><h3>Te mostramos todo.</h3><p>Ventajas, riesgos y escenarios, con datos de fuentes oficiales.</p></div></li>
+                        <li><span>04</span><div><h3>Te acompañamos.</h3><p>Desde la primera visita hasta la firma, y después.</p></div></li>
+                    </ol>
                 </div>
-                <ol class="steps-grid">
-                    <li class="step-card reveal"><span class="step-num">1</span><h3>Te escuchamos.</h3><p>Entendemos tu objetivo, tu presupuesto y tus tiempos.</p></li>
-                    <li class="step-card reveal reveal-delay-1"><span class="step-num">2</span><h3>Filtramos.</h3><p>Solo presentamos proyectos que revisamos: desarrollador, documentación legal y números.</p></li>
-                    <li class="step-card reveal reveal-delay-2"><span class="step-num">3</span><h3>Te mostramos todo.</h3><p>Ventajas, riesgos y escenarios, con datos de fuentes oficiales.</p></li>
-                    <li class="step-card reveal reveal-delay-3"><span class="step-num">4</span><h3>Te acompañamos.</h3><p>Desde la primera visita hasta la firma, y después.</p></li>
-                </ol>
             </div>
         </section>
 
         <!-- Bloque 5 · Desarrollos destacados -->
         <section class="section-padding">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="eyebrow">Catálogo</span>
-                    <h2 class="title-medium">Desarrollos destacados</h2>
+                <div class="row-head reveal">
+                    <h2 class="row-title">Desarrollos destacados</h2>
+                    <a href="desarrollos.html" class="link-underline">Ver todos</a>
                 </div>
                 <div class="properties-grid" id="featuredGrid"></div>
-                <div class="properties-cta-container">
-                    <a href="desarrollos.html" class="btn btn-primary">Ver todos <i class="fas fa-th-large"></i></a>
-                </div>
             </div>
         </section>
 
         <!-- Bloque 6 · Tipos de inversión -->
         <section class="section-padding section-alt">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="eyebrow">Opciones</span>
-                    <h2 class="title-medium">Tipos de inversión</h2>
+                <div class="row-head reveal">
+                    <h2 class="row-title">Tipos de inversión</h2>
                 </div>
-                <div class="cards-2">
-                    <div class="info-card reveal">
+                <div class="cards-2 types-grid">
+                    <div class="type-card">
                         <i class="fas fa-building"></i>
                         <h3>Inmobiliario</h3>
                         <p>Lotes, departamentos y proyectos en preventa en zonas de crecimiento del sureste.</p>
                     </div>
-                    <div class="info-card reveal reveal-delay-1">
+                    <div class="type-card">
                         <i class="fas fa-seedling"></i>
                         <h3>Tierra productiva y agroinversión</h3>
                         <p>Proyectos ligados a cultivos (cítricos), para diversificar más allá del ladrillo.</p>
@@ -126,37 +124,35 @@
         </section>
 
         <!-- Bloque 7 · Nuestros principios -->
-        <section class="section-padding">
+        <section class="principles-strip">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="eyebrow">Valores</span>
-                    <h2 class="title-medium">Nuestros principios</h2>
-                </div>
+                <h2 class="row-title principles-title reveal">Nuestros principios</h2>
                 <div class="cards-4">
-                    <div class="principle reveal"><h3>Integridad.</h3><p>Si un proyecto no nos convence, no lo recomendamos.</p></div>
-                    <div class="principle reveal reveal-delay-1"><h3>Transparencia.</h3><p>Te mostramos los datos favorables y los desfavorables.</p></div>
-                    <div class="principle reveal reveal-delay-2"><h3>Análisis.</h3><p>Decisiones con números y fuentes, no con emociones.</p></div>
-                    <div class="principle reveal reveal-delay-3"><h3>Acompañamiento.</h3><p>Una persona real te responde en cada etapa.</p></div>
+                    <div class="principle"><i class="fas fa-shield-alt"></i><div><h3>Integridad.</h3><p>Si un proyecto no nos convence, no lo recomendamos.</p></div></div>
+                    <div class="principle"><i class="far fa-eye"></i><div><h3>Transparencia.</h3><p>Te mostramos los datos favorables y los desfavorables.</p></div></div>
+                    <div class="principle"><i class="fas fa-chart-bar"></i><div><h3>Análisis.</h3><p>Decisiones con números y fuentes, no con emociones.</p></div></div>
+                    <div class="principle"><i class="far fa-handshake"></i><div><h3>Acompañamiento.</h3><p>Una persona real te responde en cada etapa.</p></div></div>
                 </div>
             </div>
         </section>
 
         <!-- Bloque 8 · Banda de eventos -->
-        <section class="events-band" data-img="bandaEventos">
-            <div class="events-band-overlay"></div>
-            <div class="container events-band-content reveal">
-                <h2 class="title-medium">Hablamos de inversión de frente.</h2>
-                <p>Presentamos oportunidades y capacitamos asesores en eventos presenciales y en línea en distintas ciudades del país.</p>
-                <a href="nosotros.html#eventos" class="btn btn-secondary">Conócenos <i class="fas fa-arrow-right"></i></a>
+        <section class="section-padding">
+            <div class="container media-split reverse">
+                <div class="section-header reveal">
+                    <h2 class="banner-title banner-title-sm">Hablamos de inversión de frente.</h2>
+                    <p>Presentamos oportunidades y capacitamos asesores en eventos presenciales y en línea en distintas ciudades del país.</p>
+                    <a href="nosotros.html#eventos" class="btn btn-dark">Conócenos</a>
+                </div>
+                <figure class="media-split-photo reveal reveal-delay-1" data-img-tag="inicioDestacados" data-sizes="(min-width: 900px) 45vw, 100vw" data-alt="Daniel Torre frente a la audiencia bajo el domo del salón de eventos"></figure>
             </div>
         </section>
 
         <!-- Bloque 9 · Testimonios (solo reales y autorizados; se omite si no hay en config.js) -->
         <section class="section-padding" id="testimonios">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="eyebrow">Testimonios</span>
-                    <h2 class="title-medium">Lo que dicen quienes invierten con nosotros</h2>
+                <div class="row-head reveal">
+                    <h2 class="row-title">Testimonios</h2>
                 </div>
                 <div class="testimonials-grid"></div>
             </div>
@@ -165,11 +161,11 @@
         <!-- Bloque 10 · CTA final -->
         <section class="section-padding cta-final">
             <div class="container reveal">
-                <h2 class="title-medium">¿Tienes capital y quieres ponerlo a trabajar con claridad?</h2>
+                <h2 class="banner-title banner-title-sm">¿Tienes capital y quieres ponerlo a trabajar con claridad?</h2>
                 <p>Agenda una asesoría sin costo. Te explicamos opciones, riesgos y tiempos antes de que tomes cualquier decisión.</p>
                 <div class="hero-cta-group">
-                    <a href="contacto.html#agenda" class="btn btn-primary"><i class="far fa-calendar-alt"></i> Agendar asesoría</a>
-                    <a href="#" data-wa="Hola, quiero agendar una asesoría con Torre Inversiones." class="btn btn-secondary"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
+                    <a href="contacto.html#agenda" class="btn btn-dark"><i class="far fa-calendar-alt"></i> Agendar asesoría</a>
+                    <a href="#" data-wa="Hola, quiero agendar una asesoría con Torre Inversiones." class="btn btn-outline-dark"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
                 </div>
             </div>
         </section>
@@ -177,9 +173,9 @@
 
     <div id="site-footer"></div>
 
-    <script src="config.js?v=2.1"></script>
+    <script src="config.js?v=4.5"></script>
     <script src="desarrollos-data.js?v=2.0"></script>
-    <script src="layout.js?v=2.0"></script>
-    <script src="index.js?v=2.1"></script>
+    <script src="layout.js?v=2.8"></script>
+    <script src="index.js?v=4.1"></script>
 </body>
 </html>

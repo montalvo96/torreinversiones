@@ -19,7 +19,8 @@
     const body = document.body;
     const page = body.dataset.page || '';
     const isLanding = body.dataset.layout === 'landing';
-    const LOGO = 'Logo Torre Inversiones - Sin Fondo.png';
+    const LOGO = 'Logo Torre Inversiones - Sin Fondo.png';      // letras blancas: para fondos oscuros (pie)
+    const LOGO_DARK = 'img/logo-torre-oscuro.png';              // letras azul noche: para fondos claros (header)
 
     /* ---------- Utilidades públicas ---------- */
     const esc = (s) => String(s == null ? '' : s)
@@ -52,8 +53,43 @@
             <header class="header header-landing">
                 <div class="container">
                     <nav class="navbar">
-                        <span class="nav-logo"><img src="${LOGO}" alt="Torre Inversiones"></span>
+                        <span class="nav-logo"><img src="${LOGO_DARK}" alt="Torre Inversiones"></span>
                         <a href="#brochure" class="btn btn-primary nav-cta">Quiero información</a>
+                    </nav>
+                </div>
+            </header>`;
+        } else if (body.dataset.header !== 'clasico') {
+            // Header editorial: barra de avisos + menú | logo al centro | acciones
+            const items = links.map(([key, href, label]) =>
+                `<li${key === 'inicio' ? ' class="nav-home"' : ''}><a href="${href}" class="nav-link${key === page ? ' active' : ''}">${label}</a></li>`).join('');
+            const wa = waLink();
+            headerSlot.outerHTML = `
+            <header class="header header-editorial">
+                <div class="topbar">
+                    <div class="container topbar-inner">
+                        <span class="topbar-side">${C.ciudad ? esc(C.ciudad) : ''}</span>
+                        <span class="topbar-center">${C.telefono ? `<a href="tel:${esc(C.telefonoLink || C.telefono)}">${esc(C.telefono)}</a>` : ''}</span>
+                        <span class="topbar-side topbar-right">
+                            ${wa ? `<a href="${wa}" target="_blank" rel="noopener noreferrer">WhatsApp</a><span class="topbar-sep">|</span>` : ''}
+                            <a href="contacto.html">Contacto</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="container">
+                    <nav class="navbar" aria-label="Menú principal">
+                        <ul class="nav-menu" id="navMenu">
+                            ${items}
+                            <li class="nav-menu-cta"><a href="contacto.html#agenda" class="btn btn-primary">Agenda tu asesoría</a></li>
+                        </ul>
+                        <a href="index.html" class="nav-logo"><img src="${LOGO_DARK}" alt="Torre Inversiones — Inicio"></a>
+                        <div class="nav-actions">
+                            ${wa ? `<a href="${wa}" class="nav-icon" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>` : ''}
+                            ${C.correo ? `<a href="mailto:${esc(C.correo)}" class="nav-icon" aria-label="Correo"><i class="far fa-envelope"></i></a>` : ''}
+                            <a href="contacto.html#agenda" class="btn btn-primary nav-cta">Agenda tu asesoría</a>
+                        </div>
+                        <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="navMenu" aria-expanded="false">
+                            <i class="fas fa-bars"></i>
+                        </button>
                     </nav>
                 </div>
             </header>`;
@@ -405,4 +441,126 @@
 
     window.Torre.refreshWhatsApp();
     observeReveal();
+})();
+
+/* ==========================================
+   MOVIMIENTO ORGÁNICO
+   Animaciones suaves que nunca tapan contenido:
+   - Luces doradas que respiran detrás de los héroes (debajo del texto, sin clics).
+   - Tarjetas y listas que entran escalonadas.
+   - Fotos que "se abren" al aparecer (sin salirse de su caja).
+   - Cifras de la barra de confianza que cuentan hasta su valor.
+   Todo se desactiva si el visitante pide menos movimiento.
+   ========================================== */
+(function () {
+    'use strict';
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('motion-ok');
+
+    const HEROES = '.hero-home, .internal-hero, .ficha-hero, .cta-final';
+    const GRIDS = '.properties-grid, .cards-2, .cards-4, .steps-grid, .audience-grid, .benefits-grid, .partners-grid, .trust-grid, .testimonials-grid, .check-list, .risk-list, .legal-checklist, .ficha-summary';
+    const PHOTOS = '.media-split-photo.has-img, .gallery-item';
+
+    const show = (el) => {
+        if (el.classList.contains('in')) return;
+        el.classList.add('in');
+        if (el.classList.contains('trust-number')) countUp(el);
+    };
+    const pending = new Set();
+    const ioCore = new IntersectionObserver((entries, o) => {
+        entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            show(en.target); pending.delete(en.target); o.unobserve(en.target);
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+    const io = { observe: (el) => { pending.add(el); ioCore.observe(el); } };
+
+    // Respaldo: si el navegador retrasa el IntersectionObserver (pestaña en segundo plano,
+    // saltos con anclas), revisamos la posición al hacer scroll para que nada quede invisible.
+    // También cubre los .reveal del sitio.
+    let checking = false;
+    const sweep = () => {
+        checking = false;
+        const limit = window.innerHeight * 0.95;
+        pending.forEach(el => {
+            if (!el.isConnected) { pending.delete(el); return; }
+            if (el.getBoundingClientRect().top < limit) { show(el); pending.delete(el); ioCore.unobserve(el); }
+        });
+        document.querySelectorAll('.reveal:not(.active)').forEach(el => {
+            if (el.getBoundingClientRect().top < limit) el.classList.add('active');
+        });
+    };
+    const queueSweep = () => { if (!checking) { checking = true; setTimeout(sweep, 120); } };
+    window.addEventListener('scroll', queueSweep, { passive: true });
+    window.addEventListener('resize', queueSweep);
+    window.addEventListener('load', queueSweep);
+
+    // Luces ambientales: 3 manchas difusas por héroe, cada una con su propio ritmo
+    const ambient = (sec) => {
+        if (sec.dataset.ambient) return;
+        sec.dataset.ambient = '1';
+        sec.classList.add('has-ambient');
+        const wrap = document.createElement('div');
+        wrap.className = 'ambient';
+        wrap.setAttribute('aria-hidden', 'true');
+        wrap.innerHTML = '<span></span><span></span><span></span>';
+        sec.prepend(wrap);
+    };
+
+    // Entrada escalonada de los hijos de cada grid/lista
+    const stagger = (grid) => {
+        [...grid.children].forEach((child, i) => {
+            if (child.dataset.motion || child.classList.contains('ambient')) return;
+            child.dataset.motion = '1';
+            child.classList.add('m-rise');
+            child.style.setProperty('--m-i', Math.min(i, 8));
+            io.observe(child);
+        });
+    };
+
+    const photo = (el) => {
+        if (el.dataset.motion) return;
+        el.dataset.motion = '1';
+        el.classList.add('m-open');
+        io.observe(el);
+    };
+
+    // Conteo de cifras: respeta prefijos/sufijos ("450+", "8", "$1.2M")
+    const countUp = (el) => {
+        const raw = el.textContent.trim();
+        const m = raw.match(/^(\D*)([\d.,]+)(.*)$/);
+        if (!m) return;
+        const target = parseFloat(m[2].replace(/,/g, ''));
+        if (!isFinite(target) || target <= 0) return;
+        const dec = (m[2].split('.')[1] || '').length;
+        const dur = 1600, t0 = performance.now();
+        const fmt = (v) => m[1] + v.toLocaleString('es-MX', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3];
+        el.style.minWidth = el.offsetWidth + 'px';      // evita que el texto brinque al contar
+        const tick = (t) => {
+            const p = Math.min(1, (t - t0) / dur);
+            const e = 1 - Math.pow(1 - p, 4);           // desacelera al final, como al asentarse
+            el.textContent = fmt(target * e);
+            if (p < 1) requestAnimationFrame(tick); else el.textContent = raw;
+        };
+
+        requestAnimationFrame(tick);
+    };
+
+    const scan = (root) => {
+        root.querySelectorAll(HEROES).forEach(ambient);
+        root.querySelectorAll(GRIDS).forEach(stagger);
+        root.querySelectorAll(PHOTOS).forEach(photo);
+        root.querySelectorAll('.trust-number:not([data-motion])').forEach(el => { el.dataset.motion = '1'; io.observe(el); });
+    };
+
+    // El contenido de fichas, catálogo y cifras se pinta después; lo detectamos al llegar
+    let scanQueued = false;
+    const mo = new MutationObserver(() => {
+        if (scanQueued) return;
+        scanQueued = true;
+        setTimeout(() => { scanQueued = false; scan(document); queueSweep(); }, 60);
+    });
+    const start = () => { scan(document); mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] }); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

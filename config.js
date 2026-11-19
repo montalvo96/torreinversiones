@@ -10,11 +10,11 @@
  */
 window.TORRE_CONFIG = {
 
-    /* ---------- Contacto (PENDIENTE DANI: confirmar que son los datos oficiales) ---------- */
-    whatsapp: '529994960094',            // Solo dígitos, con lada de país (52) para wa.me
-    telefono: '+52 (999) 496-0094',
-    telefonoLink: '+529994960094',
-    correo: 'contacto@torreinversiones.com',
+    /* ---------- Contacto (confirmado por el cliente) ---------- */
+    whatsapp: '529991913939',            // Solo dígitos, con lada de país (52) para wa.me
+    telefono: '+52 (999) 191-3939',
+    telefonoLink: '+529991913939',
+    correo: 'torreinversiones@gmail.com',
     ciudad: 'Mérida, Yucatán',
     direccion: null,                     // PENDIENTE DANI: dirección de oficina, ej. 'Calle 60 #123, Centro'
     horario: null,                       // PENDIENTE DANI: ej. 'Lunes a viernes de 9:00 a 18:00 h'
@@ -58,12 +58,33 @@ window.TORRE_CONFIG = {
     proyectosImgBase: 'https://spacebroker.avaspaceio.com/',   // para rutas de imagen relativas
 
     /* ---------- Imágenes de marca (PENDIENTE DANI: fotos reales en WebP) ---------- */
+    /* REGLA: ninguna foto se repite dentro de una misma página, ni tomas casi iguales.
+     * Las fotos actuales son solo 5 escenas distintas:
+     *   A) Banner Coterra ........ evento-01, 02, 03
+     *   B) Selfie del equipo ..... evento-04 (= nosotros-hero, es la misma foto)
+     *   C) Salón completo ........ evento-05
+     *   D) Domo + Dani ........... evento-09
+     *   E) Dani de pie ........... evento-06, 07, 08, 10, 11, 12
+     * Máximo una foto de cada escena por página. Si no alcanza, la sección va sin foto (null). */
     imagenes: {
-        heroInicio: null,                // Foto/video de fondo del hero: desarrollo o Dani en evento
+        heroInicio: 'img/eventos/evento-08.webp',                // Hero: Dani presentando frente a la audiencia (vertical, llena el arco)
         heroInicioVideo: null,           // Opcional: .mp4 corto (silenciado, en loop)
-        bandaEventos: null,              // Panorámica CDMX o Toluca con Dani frente a la audiencia
-        nosotrosHero: null,              // Dani hablando frente a una audiencia
-        retratoDani: null                // Retrato profesional
+        bandaEventos: null,                                      // Sin foto: en Inicio ya salen las 5 escenas
+        nosotrosHero: 'img/eventos/nosotros-hero.webp',          // Dani con asistentes en evento (IMG_1205)
+        retratoDani: 'img/eventos/evento-07.webp', // Retrato profesional
+        partnersHero: 'img/eventos/evento-04.webp',
+        contactoHero: 'img/eventos/evento-03.webp',
+        partnersBrokers: 'img/eventos/evento-12.webp',
+        partnersDesarrolladores: 'img/eventos/evento-02.webp',
+        // Inicio: una foto por sección
+        inicioQueBuscas: 'img/eventos/evento-01.webp',
+        inicioMetodo: null,                                      // Sin foto: evento-02 es casi igual a evento-01 (Qué buscas)
+        inicioDestacados: 'img/eventos/evento-09.webp',
+        inicioTipos: 'img/eventos/evento-04.webp',
+        inicioPrincipios: 'img/eventos/evento-10.webp',
+        // Desarrollos
+        desarrollosHero: 'img/eventos/evento-09.webp',
+        desarrollosCta: 'img/eventos/evento-01.webp'
     },
 
     /* ---------- Barra de confianza (PENDIENTE DANI) ----------
@@ -71,8 +92,9 @@ window.TORRE_CONFIG = {
      * Si ninguna tiene valor, el bloque completo se oculta.
      */
     cifras: [
-        { valor: null, etiqueta: 'desarrolladores aliados' },
-        { valor: null, etiqueta: 'brokers en nuestra red' },
+        { valor: '6', etiqueta: 'desarrolladores aliados' },
+        { valor: '450+', etiqueta: 'brokers en nuestra red' },
+        { valor: '8', etiqueta: 'años de experiencia en el sector inmobiliario' },
         { valor: null, etiqueta: 'asistentes a nuestros eventos' },
         { valor: null, etiqueta: 'ciudades donde hemos presentado' }
     ],
@@ -89,21 +111,15 @@ window.TORRE_CONFIG = {
      */
     testimonios: [],
 
-    /* ---------- Galería de eventos (PENDIENTE DANI: 6–12 fotos) ----------
-     * { src: 'img/eventos/cdmx-01.webp', ciudad: 'CDMX', fecha: 'marzo 2026', alt: 'Dani presentando ante la audiencia' }
+    /* ---------- Galería de eventos ----------
+     * Una foto por escena (ver REGLA arriba), sin fotos casi iguales. Falta confirmar la fecha del evento.
+     * { src: 'img/eventos/archivo.webp', ciudad: 'Toluca', fecha: 'marzo 2026', alt: '...' }
      */
     eventos: [
-        { src: 'img/eventos/evento-10.webp', ciudad: null, fecha: null, alt: 'Presentación ante la audiencia' },
-        { src: 'img/eventos/evento-05.webp', ciudad: null, fecha: null, alt: 'Salón lleno de inversionistas durante el evento' },
-        { src: 'img/eventos/evento-02.webp', ciudad: null, fecha: null, alt: 'Equipo de Torre Inversiones junto a la presentación del proyecto' },
-        { src: 'img/eventos/evento-06.webp', ciudad: null, fecha: null, alt: 'Presentación ante inversionistas' },
-        { src: 'img/eventos/evento-09.webp', ciudad: null, fecha: null, alt: 'Vista del salón durante la presentación' },
-        { src: 'img/eventos/evento-04.webp', ciudad: null, fecha: null, alt: 'Selfie del equipo de Torre Inversiones en el evento' },
-        { src: 'img/eventos/evento-07.webp', ciudad: null, fecha: null, alt: 'Presentación ante inversionistas' },
-        { src: 'img/eventos/evento-01.webp', ciudad: null, fecha: null, alt: 'Equipo de Torre Inversiones en el evento' },
-        { src: 'img/eventos/evento-11.webp', ciudad: null, fecha: null, alt: 'Presentación ante la audiencia' },
-        { src: 'img/eventos/evento-03.webp', ciudad: null, fecha: null, alt: 'Equipo de Torre Inversiones en el stand' },
-        { src: 'img/eventos/evento-08.webp', ciudad: null, fecha: null, alt: 'Presentación ante inversionistas' },
-        { src: 'img/eventos/evento-12.webp', ciudad: null, fecha: null, alt: 'Presentación ante la audiencia' }
+        { src: 'img/eventos/evento-05.webp', ciudad: 'Toluca', fecha: null, alt: 'Salón lleno de inversionistas durante el evento' },
+        { src: 'img/eventos/evento-01.webp', ciudad: 'Toluca', fecha: null, alt: 'Equipo de Torre Inversiones en el evento' },
+        { src: 'img/eventos/evento-09.webp', ciudad: 'Toluca', fecha: null, alt: 'Vista del salón durante la presentación' },
+        { src: 'img/eventos/evento-04.webp', ciudad: 'Toluca', fecha: null, alt: 'Equipo de Torre Inversiones con asistentes al evento' },
+        { src: 'img/eventos/evento-10.webp', ciudad: 'Toluca', fecha: null, alt: 'Presentación ante la audiencia' }
     ]
 };
