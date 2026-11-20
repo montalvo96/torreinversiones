@@ -684,16 +684,25 @@
         if (el) {
             const items = [];
             const wa = T.waLink && T.waLink();
-            if (C.telefono) items.push(['fa-phone-alt', 'Teléfono', `<a href="tel:${esc(C.telefonoLink || C.telefono)}">${esc(C.telefono)}</a>`]);
-            if (C.correo) items.push(['fa-envelope', 'Correo', `<a href="mailto:${esc(C.correo)}">${esc(C.correo)}</a>`]);
-            items.push(['fa-map-marker-alt', 'Oficina', esc([C.direccion, C.ciudad].filter(Boolean).join(', ')) || POR_CONFIRMAR]);
-            items.push(['fa-clock', 'Horario', C.horario ? esc(C.horario) : POR_CONFIRMAR]);
-            el.innerHTML = (wa ? `<a class="btn btn-whatsapp btn-block" href="${wa}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp</a>` : '') +
-                items.map(([icon, label, val]) => `
-                <div class="channel-card">
+            if (C.telefono) items.push(['fa-phone-alt', 'Teléfono', esc(C.telefono), `tel:${esc(C.telefonoLink || C.telefono)}`]);
+            if (C.correo) items.push(['fa-envelope', 'Correo', esc(C.correo), `mailto:${esc(C.correo)}`]);
+            const oficina = [C.direccion, C.ciudad].filter(Boolean).join(', ');
+            if (oficina) items.push(['fa-map-marker-alt', 'Oficina', esc(oficina)]);
+            // El horario solo se muestra cuando Dani lo confirme en config.js (no "Por confirmar" en público)
+            if (C.horario) items.push(['fa-clock', 'Horario', esc(C.horario)]);
+            const waCard = wa ? `<a class="channel-wa" href="${wa}" target="_blank" rel="noopener noreferrer">
+                    <span class="channel-wa-icon"><i class="fab fa-whatsapp"></i></span>
+                    <span class="channel-wa-text"><strong>Escríbenos por WhatsApp</strong></span>
+                    <i class="fas fa-arrow-right channel-arrow"></i>
+                </a>` : '';
+            el.innerHTML = waCard + '<div class="channel-list">' + items.map(([icon, label, val, href]) => {
+                const tag = href ? 'a' : 'div';
+                return `<${tag} class="channel-card"${href ? ` href="${href}"` : ''}>
                     <div class="channel-icon"><i class="fas ${icon}"></i></div>
                     <div class="channel-info"><label>${label}</label><span>${val}</span></div>
-                </div>`).join('');
+                    ${href ? '<i class="fas fa-arrow-right channel-arrow"></i>' : ''}
+                </${tag}>`;
+            }).join('') + '</div>';
         }
         const agenda = $('#agendaEmbed');
         if (agenda) {

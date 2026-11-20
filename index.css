@@ -2456,10 +2456,11 @@ body.theme-light {
 .hero-wordmark .wm-main { display: block; }
 .hero-wordmark .wm-sub { display: block; font-size: .43em; letter-spacing: .1em; margin: .1em -.1em 0 0; line-height: .9; color: var(--color-gold-dark); }
 .hero-ed { --wm: clamp(5rem, 18.5vw, 16.5rem); grid-template-columns: 1fr minmax(240px, 29%) 1fr; }
-.hero-ed-photo { margin-top: calc(var(--wm) * 1.02); }
+/* La foto arranca debajo de INVERSIONES (TORRE .8 + INVERSIONES ~.43 del --wm) para no taparlo */
+.hero-ed-photo { margin-top: calc(var(--wm) * 1.32); }
 @media (max-width: 900px) {
     .hero-ed { --wm: clamp(3.6rem, 21vw, 9rem); grid-template-columns: 1fr; }
-    .hero-ed-photo { margin-top: calc(var(--wm) * -.2); }
+    .hero-ed-photo { margin-top: calc(var(--wm) * .12); }
 }
 
 /* Logo oficial en el header (versión con letras azul noche) */
@@ -2557,3 +2558,57 @@ body:not([data-layout="landing"]) .ficha-hero { padding-top: calc(80px + 32px + 
     .feature-banner-content { max-width: 500px; }
 }
 .hero-ed-photo img { object-position: 50% 62%; }
+
+/* ==========================================
+   23. CONTACTO · canales y formulario (tema claro)
+   ========================================== */
+.theme-light .contact-grid { grid-template-columns: .85fr 1.15fr; gap: clamp(2.5rem, 6vw, 5.5rem); }
+.contact-lead { color: var(--color-text-muted); font-size: 1rem; line-height: 1.6; margin: .75rem 0 2rem; max-width: 40ch; }
+.theme-light .contact-channels { gap: 1.25rem; margin: 2rem 0 2.75rem; }
+
+/* WhatsApp: tarjeta destacada en lugar de la barra verde */
+.channel-wa { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; background: var(--navy); color: #fff; border-radius: 4px; transition: background .3s ease, transform .3s ease; }
+.channel-wa:hover { background: #10264a; transform: translateY(-2px); }
+.channel-wa-icon { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; font-size: 1.45rem; }
+.channel-wa-text { display: flex; flex-direction: column; gap: .15rem; flex: 1; }
+.channel-wa-text strong { font-size: .98rem; font-weight: 600; letter-spacing: .01em; }
+.channel-wa-text small { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gold-light, #dfba6b); }
+.channel-wa .channel-arrow { color: #fff; opacity: .7; }
+
+/* Lista de canales con líneas finas */
+.channel-list { border-top: 1px solid var(--color-border); }
+.theme-light .channel-card { align-items: center; gap: 1.1rem; padding: 1.05rem .25rem; border-bottom: 1px solid var(--color-border); color: inherit; transition: background .3s ease, padding .3s ease; }
+.theme-light a.channel-card:hover { background: rgba(197, 160, 89, .07); padding-left: .75rem; }
+.theme-light .channel-icon { width: 42px; height: 42px; border-radius: 50%; background: transparent; border: 1px solid rgba(166, 131, 63, .35); box-shadow: none; font-size: 1rem; color: var(--color-gold-dark); }
+.theme-light .channel-info { flex: 1; min-width: 0; }
+.theme-light .channel-info label { font-size: .66rem; margin-bottom: .2rem; cursor: inherit; }
+.theme-light .channel-info span { font-size: 1.02rem; font-weight: 500; color: var(--navy); }
+.channel-arrow { font-size: .8rem; color: var(--color-gold-dark); opacity: 0; transform: translateX(-6px); transition: opacity .3s ease, transform .3s ease; }
+a.channel-card:hover .channel-arrow, .channel-wa .channel-arrow { opacity: 1; transform: none; }
+
+/* ¿Qué pasa después? */
+.contact-next-title { font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gold-dark); margin: 0 0 1.1rem; }
+.contact-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.contact-steps li { display: flex; gap: 1rem; align-items: flex-start; }
+.contact-steps li > span { font-family: var(--font-display); font-size: 1.6rem; line-height: 1; color: var(--color-gold-dark); min-width: 2ch; }
+.contact-steps strong { display: block; color: var(--navy); font-weight: 600; font-size: .95rem; margin-bottom: .15rem; }
+.contact-steps div { color: var(--color-text-muted); font-size: .88rem; line-height: 1.5; }
+
+/* Formulario */
+.theme-light .contact-form-wrapper { padding: clamp(1.75rem, 3.5vw, 3rem); border-top: 3px solid var(--color-gold-dark); }
+.form-head { margin-bottom: 1.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); }
+.form-head-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 2.4vw, 2rem); color: var(--navy); margin: 0 0 .35rem; line-height: 1.1; }
+.form-head-sub { color: var(--color-text-muted); font-size: .9rem; margin: 0; }
+.theme-light .contact-form { gap: 1.3rem; }
+.theme-light .contact-form .form-row-2 { gap: 1.3rem; }
+.theme-light .contact-form .form-group { gap: .45rem; }
+.theme-light .contact-form .form-group label { font-size: .68rem; font-weight: 600; letter-spacing: .12em; color: var(--navy); }
+.form-group label .opt { font-style: normal; font-weight: 400; letter-spacing: .04em; text-transform: none; color: var(--color-text-muted); }
+.theme-light .contact-form .form-control { padding: .9rem 1rem; font-size: .92rem; background-color: #fff; }
+.theme-light .contact-form .form-select { background-position: right 1rem center; padding-right: 2.6rem; }
+.theme-light .contact-form textarea.form-control { height: 120px; }
+.theme-light .contact-form .checkbox-row { font-size: .82rem; }
+.theme-light .contact-form .submit-btn { padding: 1.05rem 1.6rem; margin-top: .25rem; }
+@media (max-width: 900px) {
+    .theme-light .contact-grid { grid-template-columns: 1fr; }
+}
