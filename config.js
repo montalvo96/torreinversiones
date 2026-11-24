@@ -28,21 +28,20 @@ window.TORRE_CONFIG = {
         linkedin: null
     },
 
-    /* ---------- GoHighLevel ----------
-     * ghlWebhookUrl: URL de un "Inbound Webhook" (Workflow trigger) de GHL.
-     *   Cada formulario envía un JSON con: nombre, telefono, correo, perfil, pipeline,
-     *   desarrollo, interes, tags[], pagina_origen, utm_source, utm_medium, utm_campaign,
-     *   utm_term, utm_content, fbclid y los campos propios del formulario.
-     *   En el workflow de GHL se crea/actualiza el contacto, se agregan los tags
-     *   y se envía al pipeline indicado ("Inversionistas", "Brokers", "Desarrolladores").
-     * ghlCalendarUrl: URL del widget de calendario de GHL para agendar asesoría.
+    /* ---------- Formularios ----------
+     * formularioCorreo: correo que recibe TODOS los formularios del sitio (vía FormSubmit.co).
+     *   Cada envío llega con: nombre, telefono, correo, perfil, desarrollo, los campos del
+     *   formulario, pagina_origen y UTM / fbclid.
+     *   OJO: el primer envío manda a ese correo un mensaje de activación de FormSubmit;
+     *   hay que dar clic en "Activate" una sola vez para que empiecen a llegar.
+     * calendarioUrl: (opcional) URL embebible del calendario de citas del CRM.
+     *   Si es null, la sección "Agenda tu asesoría" muestra solo el botón de WhatsApp.
      */
-    ghlWebhookUrl: null,                 // ej. 'https://services.leadconnectorhq.com/hooks/XXXX/webhook-trigger/YYYY'
-    ghlCalendarUrl: null,                // ej. 'https://api.leadconnectorhq.com/widget/booking/XXXX'
+    formularioCorreo: null,              // PENDIENTE DANI: ej. 'contacto@torreinversiones.com'
+    calendarioUrl: null,
 
-    /* ---------- Medición (se cargan solo si el visitante acepta cookies) ---------- */
-    ga4Id: null,                         // ej. 'G-XXXXXXXXXX'
-    metaPixelId: null,                   // ej. '123456789012345'
+    /* ---------- Medición (se carga solo si el visitante acepta cookies) ---------- */
+    metaPixelId: null,                   // PENDIENTE: se configura en la cita con Dani. ej. '123456789012345'
 
     /* ---------- Proyectos desde Space Broker (por organización) ----------
      * El admin de la organización copia su endpoint desde Space Broker y lo pega aquí.

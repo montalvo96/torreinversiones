@@ -167,7 +167,7 @@ Mientras no existan, el sitio muestra "Por confirmar" en esas secciones.
 | `tags` | Opcional | Chips en la card. |
 | `lo_que_debes_saber` | **Muy recomendado** | Bloque de riesgos de la ficha. Es el sello de Torre y nunca se oculta; si falta, aparece "Por confirmar". |
 | `por_que_nos_gusta`, `desarrollador`, `puntos_de_interes`, `tipologias`, `esquemas_pago`, `legal`, `escenarios` | Opcional | Secciones de la ficha. |
-| `brochure` | Opcional | Se abre después de que el visitante deja sus datos (lead a GoHighLevel). |
+| `brochure` | Opcional | Se abre después de que el visitante deja sus datos (el lead llega por correo). |
 | `link_publico` | Opcional | Enlace secundario "Ver presentación completa del proyecto" en la ficha. |
 
 El sitio es tolerante: también reconoce `data` paginado (`data.data`), un arreglo en la raíz,

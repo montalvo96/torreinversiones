@@ -15,18 +15,19 @@ npx serve .
 | Qué | Archivo |
 |---|---|
 | WhatsApp, teléfono, correo, horario, redes | `config.js` |
-| Webhook y calendario de GoHighLevel | `config.js` → `ghlWebhookUrl`, `ghlCalendarUrl` |
-| GA4 y Meta Pixel (cargan solo si el visitante acepta cookies) | `config.js` → `ga4Id`, `metaPixelId` |
+| Correo que recibe los formularios y calendario opcional | `config.js` → `formularioCorreo`, `calendarioUrl` |
+| Meta Pixel (carga solo si el visitante acepta cookies) | `config.js` → `metaPixelId` |
 | Cifras de confianza, aliados, testimonios, fotos de eventos | `config.js` (vacío = el bloque se oculta) |
 | Proyectos | Endpoint de Space Broker en `config.js` → `proyectosApiUrl` (contrato en `API-SPACEBROKER.md`); respaldo en `desarrollos-data.js` |
 | Header, footer, WhatsApp flotante, cookies, envío de formularios | `layout.js` |
 | Catálogo, filtros, ficha, landing | `index.js` |
 
-## Formularios → GoHighLevel
+## Formularios → correo
 
-Todo `<form data-ghl-form>` envía un JSON al webhook con: datos del form, `perfil`, `pipeline`
-(Inversionistas / Brokers / Desarrolladores), `desarrollo`, `tags[]`, `pagina_origen`,
+Todo `<form data-lead-form>` se envía por FormSubmit.co al correo de `formularioCorreo` con: datos del form,
+`perfil`, `pipeline` (Inversionistas / Brokers / Desarrolladores), `desarrollo`, `tags`, `pagina_origen`,
 `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` y `fbclid`.
+El primer envío llega como correo de activación de FormSubmit: hay que dar clic en "Activate" una vez.
 
 ## Pendientes antes de lanzar
 

@@ -4,8 +4,8 @@
  *   - Header con menú + botón fijo "Agenda tu asesoría"
  *   - Footer con contacto, redes, newsletter, legales y disclaimer
  *   - Botón flotante de WhatsApp con mensaje prellenado según la página
- *   - Banner de cookies (GA4 y Meta Pixel solo cargan si el visitante acepta)
- *   - Captura de UTM / fbclid y envío de TODOS los formularios a GoHighLevel
+ *   - Banner de cookies (Meta Pixel solo carga si el visitante acepta)
+ *   - Captura de UTM / fbclid y envío de TODOS los formularios al correo de config.js
  *
  * Cada página indica en <body>:
  *   data-page="inicio|desarrollos|nosotros|partners|contacto|legal"
@@ -181,7 +181,7 @@
                         <div class="footer-col">
                             <h4 class="footer-col-title">Newsletter</h4>
                             <p class="newsletter-sub">Recibe preventas y reportes del mercado.</p>
-                            <form class="newsletter-form" data-ghl-form data-perfil="newsletter" data-tags="newsletter" data-success="¡Listo! Te suscribiste al newsletter.">
+                            <form class="newsletter-form" data-lead-form data-perfil="newsletter" data-tags="newsletter" data-success="¡Listo! Te suscribiste al newsletter.">
                                 <input type="email" name="correo" class="form-control" placeholder="Tu correo electrónico" required aria-label="Correo para newsletter">
                                 <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
                                 <div class="form-feedback" role="status"></div>
@@ -273,7 +273,7 @@
     };
 
     /* ==========================================
-       6. COOKIES + MEDICIÓN (GA4 / META PIXEL)
+       6. COOKIES + MEDICIÓN (META PIXEL)
        ========================================== */
     const lsGet = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
     const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* sin almacenamiento */ } };
@@ -282,16 +282,6 @@
     const loadAnalytics = () => {
         if (analyticsLoaded) return;
         analyticsLoaded = true;
-        if (C.ga4Id) {
-            const s = document.createElement('script');
-            s.async = true;
-            s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(C.ga4Id)}`;
-            document.head.appendChild(s);
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function () { window.dataLayer.push(arguments); };
-            window.gtag('js', new Date());
-            window.gtag('config', C.ga4Id);
-        }
         if (C.metaPixelId) {
             /* eslint-disable */
             !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
@@ -303,7 +293,6 @@
 
     function track(event, data) {
         if (window.fbq) window.fbq('track', event, data || {});
-        if (window.gtag) window.gtag('event', event === 'Lead' ? 'generate_lead' : event.toLowerCase(), data || {});
     }
     window.Torre.track = track;
 
@@ -315,7 +304,7 @@
         banner.setAttribute('role', 'dialog');
         banner.setAttribute('aria-label', 'Aviso de cookies');
         banner.innerHTML = `
-            <p>Usamos cookies necesarias para que el sitio funcione y, si lo aceptas, cookies de medición (Google Analytics y Meta) para mejorar nuestras campañas. <a href="aviso-privacidad.html">Aviso de privacidad</a>.</p>
+            <p>Usamos cookies necesarias para que el sitio funcione y, si lo aceptas, cookies de medición (Meta) para mejorar nuestras campañas. <a href="aviso-privacidad.html">Aviso de privacidad</a>.</p>
             <div class="cookie-actions">
                 <button type="button" class="btn btn-secondary" data-cookie="necessary">Solo necesarias</button>
                 <button type="button" class="btn btn-primary" data-cookie="all">Aceptar</button>
@@ -331,9 +320,9 @@
     }
 
     /* ==========================================
-       7. FORMULARIOS → GOHIGHLEVEL
+       7. FORMULARIOS → CORREO
        ------------------------------------------
-       Cualquier <form data-ghl-form> se envía al webhook de GHL.
+       Cualquier <form data-lead-form> se envía a C.formularioCorreo (FormSubmit.co).
        Atributos opcionales del form:
          data-perfil      inversionista | broker | desarrollador | newsletter | evento
          data-pipeline    Inversionistas | Brokers | Desarrolladores
@@ -379,7 +368,7 @@
     };
 
     document.addEventListener('submit', async (e) => {
-        const form = e.target.closest('form[data-ghl-form]');
+        const form = e.target.closest('form[data-lead-form]');
         if (!form) return;
         e.preventDefault();
 
@@ -391,14 +380,23 @@
         if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>'; }
 
         try {
-            if (!C.ghlWebhookUrl) {
-                console.warn('[Torre] ghlWebhookUrl no está configurado en config.js. Datos del formulario:', payload);
-                throw new Error('webhook-no-configurado');
+            if (!C.formularioCorreo) {
+                console.warn('[Torre] formularioCorreo no está configurado en config.js. Datos del formulario:', payload);
+                throw new Error('formulario-no-configurado');
             }
-            const res = await fetch(C.ghlWebhookUrl, {
+            const asunto = 'Nuevo contacto desde la web'
+                + (payload.perfil ? ' · ' + payload.perfil : '')
+                + (payload.desarrollo ? ' · ' + payload.desarrollo : '');
+            const envio = Object.assign({}, payload, {
+                tags: payload.tags.join(', '),
+                _subject: asunto,
+                _template: 'table'
+            });
+            if (payload.correo) envio._replyto = payload.correo;
+            const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(C.formularioCorreo), {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(envio)
             });
             if (!res.ok) throw new Error('HTTP ' + res.status);
 
@@ -413,7 +411,7 @@
         } catch (err) {
             const wa = waLink();
             showFeedback(form,
-                err.message === 'webhook-no-configurado'
+                err.message === 'formulario-no-configurado'
                     ? 'El formulario todavía no está conectado. Por favor escríbenos por WhatsApp mientras tanto.'
                     : 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos por WhatsApp.',
                 'error');

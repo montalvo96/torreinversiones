@@ -343,7 +343,7 @@
     const lista = (arr) => `<ul class="check-list">${arr.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
 
     const brochureForm = (d, opts) => `
-        <form class="contact-form brochure-form" data-ghl-form data-perfil="inversionista" data-desarrollo="${esc(d.nombre)}"
+        <form class="contact-form brochure-form" data-lead-form data-perfil="inversionista" data-desarrollo="${esc(d.nombre)}"
               data-tags="brochure${opts && opts.landing ? ',landing' : ''}"
               data-success="Gracias, {nombre}. ${d.brochure ? 'Tu brochure se abrió en una pestaña nueva; ' : 'Te enviaremos el brochure y '}te contactaremos por WhatsApp muy pronto.">
             <input type="hidden" name="interes" value="${d.tipo === 'agroinversion' ? 'agroinversion' : 'inmobiliario'}">
@@ -706,12 +706,11 @@
         }
         const agenda = $('#agendaEmbed');
         if (agenda) {
-            if (C.ghlCalendarUrl) {
-                agenda.innerHTML = `<iframe src="${esc(C.ghlCalendarUrl)}" title="Agenda tu asesoría" loading="lazy" class="calendar-embed"></iframe>`;
+            if (C.calendarioUrl) {
+                agenda.innerHTML = `<iframe src="${esc(C.calendarioUrl)}" title="Agenda tu asesoría" loading="lazy" class="calendar-embed"></iframe>`;
             } else {
                 const wa = T.waLink && T.waLink('Hola, quiero agendar una asesoría con Torre Inversiones.');
-                agenda.innerHTML = `${placeholder('[Calendario de GoHighLevel: pendiente de configurar]', 'fa-calendar-alt')}
-                    ${wa ? `<p style="margin-top:1rem;text-align:center"><a class="btn btn-secondary" href="${wa}" target="_blank" rel="noopener noreferrer">Agendar por WhatsApp</a></p>` : ''}`;
+                agenda.innerHTML = wa ? `<p style="text-align:center"><a class="btn btn-secondary" href="${wa}" target="_blank" rel="noopener noreferrer">Agendar por WhatsApp</a></p>` : '';
             }
         }
     };
