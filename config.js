@@ -42,15 +42,15 @@ window.TORRE_CONFIG = {
 
     /* ---------- Proyectos desde Space Broker (por organización) ----------
      * El admin de la organización copia su endpoint desde Space Broker y lo pega aquí.
-     * Ej.: 'https://spacebroker.avaspaceio.com/api/organizaciones/ID_ORGANIZACION/proyectos'
+     * Ej.: 'https://spacebroker.avaspaceio.com/api/v1/organizaciones/SLUG_ORGANIZACION/proyectos'
      *
      * - Si está configurado, la API es la fuente principal: los proyectos que el admin
      *   agregue, edite o pause en Space Broker aparecen/desaparecen solos en el sitio.
-     * - desarrollos-data.js queda como respaldo (si la API falla o no está configurada)
+     * - desarrollos-data.js queda como respaldo (si la API falla, no está configurada o aún no regresa proyectos)
      *   y como complemento: si un slug coincide, rellena lo que la API no mande.
      * - Contrato del endpoint: ver API-SPACEBROKER.md
      */
-    proyectosApiUrl: null,
+    proyectosApiUrl: 'https://spacebroker.avaspaceio.com/api/v1/organizaciones/torre-inversiones/proyectos',
     proyectosImgBase: 'https://spacebroker.avaspaceio.com/',   // para rutas de imagen relativas
 
     /* ---------- Imágenes de marca (PENDIENTE DANI: fotos reales en WebP) ---------- */

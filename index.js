@@ -201,7 +201,8 @@
                 const api = extraerLista(await res.json()).filter(Boolean).map(normalizarApi);
                 const porSlug = new Map(locales.map(d => [d.slug, d]));
                 // La API manda: solo se muestran los proyectos que regrese. Lo local rellena huecos.
-                lista = api.map(p => {
+                // Si todavía no regresa ninguno (organización sin proyectos publicados), se queda lo local.
+                if (api.length) lista = api.map(p => {
                     const local = porSlug.get(p.slug);
                     if (!local) return p;
                     const out = Object.assign({}, local);

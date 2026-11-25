@@ -18,7 +18,7 @@ el JSON y dibuja los proyectos, igual que una "PokeAPI".
 ## Ruta
 
 ```
-GET https://spacebroker.avaspaceio.com/api/organizaciones/{slug_organizacion}/proyectos
+GET https://spacebroker.avaspaceio.com/api/v1/organizaciones/{slug_organizacion}/proyectos
 ```
 
 - Usar el `slug` de `organizaciones` (ej. `torre-inversiones`) en vez del id numérico, para que
@@ -179,7 +179,7 @@ y nombres alternativos (`name`, `price`, `images`, `status`…). Si `estatus` co
 En `config.js` de torreinversiones.com:
 
 ```js
-proyectosApiUrl: 'https://spacebroker.avaspaceio.com/api/organizaciones/torre-inversiones/proyectos',
+proyectosApiUrl: 'https://spacebroker.avaspaceio.com/api/v1/organizaciones/torre-inversiones/proyectos',
 ```
 
-Mientras el endpoint no exista, el sitio usa los proyectos de `desarrollos-data.js`.
+Mientras el endpoint no exista o no regrese proyectos (`data` vacío), el sitio usa los proyectos de `desarrollos-data.js`.
