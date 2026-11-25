@@ -14,8 +14,8 @@ npx serve .
 
 | Qué | Archivo |
 |---|---|
-| WhatsApp, teléfono, correo, horario, redes | `config.js` |
-| Correo que recibe los formularios y calendario opcional | `config.js` → `formularioCorreo`, `calendarioUrl` |
+| WhatsApp, teléfono, correo, redes | `config.js` |
+| Endpoint que recibe los formularios y calendario opcional | `config.js` → `formularioUrl`, `calendarioUrl` |
 | Meta Pixel (carga solo si el visitante acepta cookies) | `config.js` → `metaPixelId` |
 | Cifras de confianza, aliados, testimonios, fotos de eventos | `config.js` (vacío = el bloque se oculta) |
 | Proyectos | Endpoint de Space Broker en `config.js` → `proyectosApiUrl` (contrato en `API-SPACEBROKER.md`); respaldo en `desarrollos-data.js` |
@@ -24,10 +24,9 @@ npx serve .
 
 ## Formularios → correo
 
-Todo `<form data-lead-form>` se envía por FormSubmit.co al correo de `formularioCorreo` con: datos del form,
+Todo `<form data-lead-form>` se envía por POST JSON `{ data }` a `formularioUrl` (emailform.avaspaceio.com) con: datos del form, `email`,
 `perfil`, `pipeline` (Inversionistas / Brokers / Desarrolladores), `desarrollo`, `tags`, `pagina_origen`,
 `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` y `fbclid`.
-El primer envío llega como correo de activación de FormSubmit: hay que dar clic en "Activate" una vez.
 
 ## Pendientes antes de lanzar
 

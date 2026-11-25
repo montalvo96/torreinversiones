@@ -2,7 +2,7 @@
  * Archivo: layout.js
  * Elementos compartidos en todo el sitio:
  *   - Header con menú + botón fijo "Agenda tu asesoría"
- *   - Footer con contacto, redes, newsletter, legales y disclaimer
+ *   - Footer con contacto, redes, legales y disclaimer
  *   - Botón flotante de WhatsApp con mensaje prellenado según la página
  *   - Banner de cookies (Meta Pixel solo carga si el visitante acepta)
  *   - Captura de UTM / fbclid y envío de TODOS los formularios al correo de config.js
@@ -134,7 +134,6 @@
         if (wa) out.push(`<li><i class="fab fa-whatsapp"></i><a href="${wa}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(C.telefono || '')}</a></li>`);
         if (C.telefono) out.push(`<li><i class="fas fa-phone-alt"></i><a href="tel:${esc(C.telefonoLink || C.telefono)}">${esc(C.telefono)}</a></li>`);
         if (C.correo) out.push(`<li><i class="far fa-envelope"></i><a href="mailto:${esc(C.correo)}">${esc(C.correo)}</a></li>`);
-        if (C.ciudad) out.push(`<li><i class="fas fa-map-marker-alt"></i><span>${esc(C.ciudad)}</span></li>`);
         return out.join('');
     };
 
@@ -177,15 +176,6 @@
                         <div class="footer-col">
                             <h4 class="footer-col-title">Contacto</h4>
                             <ul class="footer-contact">${contactoLista()}</ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4 class="footer-col-title">Newsletter</h4>
-                            <p class="newsletter-sub">Recibe preventas y reportes del mercado.</p>
-                            <form class="newsletter-form" data-lead-form data-perfil="newsletter" data-tags="newsletter" data-success="¡Listo! Te suscribiste al newsletter.">
-                                <input type="email" name="correo" class="form-control" placeholder="Tu correo electrónico" required aria-label="Correo para newsletter">
-                                <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
-                                <div class="form-feedback" role="status"></div>
-                            </form>
                         </div>
                     </div>
                     <p class="footer-disclaimer">${DISCLAIMER}</p>
@@ -322,7 +312,7 @@
     /* ==========================================
        7. FORMULARIOS → CORREO
        ------------------------------------------
-       Cualquier <form data-lead-form> se envía a C.formularioCorreo (FormSubmit.co).
+       Cualquier <form data-lead-form> se envía a C.formularioUrl como { data: {...} }.
        Atributos opcionales del form:
          data-perfil      inversionista | broker | desarrollador | newsletter | evento
          data-pipeline    Inversionistas | Brokers | Desarrolladores
@@ -380,25 +370,22 @@
         if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>'; }
 
         try {
-            if (!C.formularioCorreo) {
-                console.warn('[Torre] formularioCorreo no está configurado en config.js. Datos del formulario:', payload);
+            if (!C.formularioUrl) {
+                console.warn('[Torre] formularioUrl no está configurado en config.js. Datos del formulario:', payload);
                 throw new Error('formulario-no-configurado');
             }
-            const asunto = 'Nuevo contacto desde la web'
-                + (payload.perfil ? ' · ' + payload.perfil : '')
-                + (payload.desarrollo ? ' · ' + payload.desarrollo : '');
-            const envio = Object.assign({}, payload, {
-                tags: payload.tags.join(', '),
-                _subject: asunto,
-                _template: 'table'
+            // Todos los campos viajan en una sola variable: data
+            const data = Object.assign({}, payload, {
+                email: payload.correo || payload.email || '',
+                tags: payload.tags.join(', ')
             });
-            if (payload.correo) envio._replyto = payload.correo;
-            const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(C.formularioCorreo), {
+            const res = await fetch(C.formularioUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(envio)
+                body: JSON.stringify({ data })
             });
-            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const json = await res.json().catch(() => ({}));
+            if (!res.ok || json.ok === false) throw new Error(json.message || ('HTTP ' + res.status));
 
             track('Lead', { content_name: payload.desarrollo || payload.perfil || 'formulario' });
             const nombre = (payload.nombre || '').split(' ')[0];

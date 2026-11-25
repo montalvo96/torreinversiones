@@ -686,10 +686,6 @@
             const wa = T.waLink && T.waLink();
             if (C.telefono) items.push(['fa-phone-alt', 'Teléfono', esc(C.telefono), `tel:${esc(C.telefonoLink || C.telefono)}`]);
             if (C.correo) items.push(['fa-envelope', 'Correo', esc(C.correo), `mailto:${esc(C.correo)}`]);
-            const oficina = [C.direccion, C.ciudad].filter(Boolean).join(', ');
-            if (oficina) items.push(['fa-map-marker-alt', 'Oficina', esc(oficina)]);
-            // El horario solo se muestra cuando Dani lo confirme en config.js (no "Por confirmar" en público)
-            if (C.horario) items.push(['fa-clock', 'Horario', esc(C.horario)]);
             const waCard = wa ? `<a class="channel-wa" href="${wa}" target="_blank" rel="noopener noreferrer">
                     <span class="channel-wa-icon"><i class="fab fa-whatsapp"></i></span>
                     <span class="channel-wa-text"><strong>Escríbenos por WhatsApp</strong></span>

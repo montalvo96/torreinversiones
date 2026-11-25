@@ -16,8 +16,6 @@ window.TORRE_CONFIG = {
     telefonoLink: '+529991913939',
     correo: 'torreinversiones@gmail.com',
     ciudad: 'Mérida, Yucatán',
-    direccion: null,                     // PENDIENTE DANI: dirección de oficina, ej. 'Calle 60 #123, Centro'
-    horario: null,                       // PENDIENTE DANI: ej. 'Lunes a viernes de 9:00 a 18:00 h'
 
     /* ---------- Redes sociales (null = no se muestra el ícono) ---------- */
     redes: {
@@ -29,15 +27,14 @@ window.TORRE_CONFIG = {
     },
 
     /* ---------- Formularios ----------
-     * formularioCorreo: correo que recibe TODOS los formularios del sitio (vía FormSubmit.co).
-     *   Cada envío llega con: nombre, telefono, correo, perfil, desarrollo, los campos del
-     *   formulario, pagina_origen y UTM / fbclid.
-     *   OJO: el primer envío manda a ese correo un mensaje de activación de FormSubmit;
-     *   hay que dar clic en "Activate" una sola vez para que empiecen a llegar.
+     * formularioUrl: endpoint que recibe TODOS los formularios del sitio y los manda por correo.
+     *   Se envía POST JSON { data: { ...campos } } con: nombre, telefono, correo, perfil,
+     *   desarrollo, los campos del formulario, pagina_origen y UTM / fbclid.
+     *   Responde { ok, message }.
      * calendarioUrl: (opcional) URL embebible del calendario de citas del CRM.
      *   Si es null, la sección "Agenda tu asesoría" muestra solo el botón de WhatsApp.
      */
-    formularioCorreo: null,              // PENDIENTE DANI: ej. 'contacto@torreinversiones.com'
+    formularioUrl: 'https://emailform.avaspaceio.com/forms/torres-inversiones',
     calendarioUrl: null,
 
     /* ---------- Medición (se carga solo si el visitante acepta cookies) ---------- */
