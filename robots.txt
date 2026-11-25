@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /landing.html
+Disallow: /landing/
+
+Sitemap: https://torreinversiones.com/sitemap.xml

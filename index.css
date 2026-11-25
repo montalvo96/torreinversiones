@@ -2612,3 +2612,27 @@ a.channel-card:hover .channel-arrow, .channel-wa .channel-arrow { opacity: 1; tr
 @media (max-width: 900px) {
     .theme-light .contact-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Bloques SEO: texto de posicionamiento + preguntas frecuentes
+   ========================================================================== */
+.seo-intro { max-width: 860px; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.seo-intro .row-title { margin-bottom: 1.25rem; }
+.seo-intro p { color: var(--color-text-muted); line-height: 1.75; margin-bottom: 1rem; }
+.seo-cols { display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+.seo-col { border-top: 1px solid var(--color-border); padding-top: 1.25rem; }
+.seo-col h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: .6rem; }
+.seo-col p { color: var(--color-text-muted); line-height: 1.7; font-size: .95rem; }
+@media (min-width: 900px) { .seo-cols { grid-template-columns: repeat(3, 1fr); } }
+
+.faq-section .row-title { margin-bottom: 2rem; }
+.faq-list { border-top: 1px solid var(--color-border); }
+.faq-item { border-bottom: 1px solid var(--color-border); }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.3rem 0; font-weight: 500; font-size: 1.02rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; flex-shrink: 0; font-size: 1.4rem; line-height: 1; color: var(--color-gold); transition: transform .3s ease; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { color: var(--color-text-muted); line-height: 1.75; padding: 0 2.5rem 1.4rem 0; }
+.theme-light .seo-col h3, .theme-light .faq-item summary { color: var(--navy); }
+.theme-light .faq-item summary::after { color: var(--color-gold-dark); }
+.theme-light .faq-item summary:hover { color: var(--color-gold-dark); }

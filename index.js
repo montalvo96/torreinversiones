@@ -375,6 +375,26 @@
         document.title = `${d.nombre} | Torre Inversiones`;
         const metaDesc = $('meta[name="description"]');
         if (metaDesc && d.resumen) metaDesc.setAttribute('content', d.resumen.replace(/\[[^\]]*\]/g, '').trim());
+        // SEO de la ficha: título con ubicación, URL canónica limpia y tarjeta para redes
+        if (!landing && d.slug) {
+            const ubic = (d.ubicacion || '').replace(/\[[^\]]*\]/g, '').trim();
+            document.title = `${d.nombre}${ubic ? ` en ${ubic}` : ''} | Torre Inversiones`;
+            const urlFicha = `https://torreinversiones.com/desarrollos/${encodeURIComponent(d.slug)}`;
+            const setHead = (sel, tag, attrs) => {
+                let el = $(sel);
+                if (!el) { el = document.createElement(tag); document.head.appendChild(el); }
+                Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+            };
+            setHead('link[rel="canonical"]', 'link', { rel: 'canonical', href: urlFicha });
+            setHead('meta[property="og:url"]', 'meta', { property: 'og:url', content: urlFicha });
+            setHead('meta[property="og:title"]', 'meta', { property: 'og:title', content: document.title });
+            setHead('meta[name="twitter:title"]', 'meta', { name: 'twitter:title', content: document.title });
+            if (metaDesc) {
+                setHead('meta[property="og:description"]', 'meta', { property: 'og:description', content: metaDesc.content });
+                setHead('meta[name="twitter:description"]', 'meta', { name: 'twitter:description', content: metaDesc.content });
+            }
+            if (d.portada && /^https?:/.test(d.portada)) setHead('meta[property="og:image"]', 'meta', { property: 'og:image', content: d.portada });
+        }
 
         const precio = money(d.precioDesde);
         const galeria = (d.galeria && d.galeria.length) ? d.galeria : (d.portada ? [d.portada] : []);
